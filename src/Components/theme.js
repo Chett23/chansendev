@@ -1,0 +1,6 @@
+export const main = '#EBF2FA'
+export const mtnDew = '#09BC8A'
+export const blueSteel = '#427AA1'
+export const macYellow = '#FFBD44'
+export const macRed = '#FF605C'
+export const macGreen = '#00CA4E'
