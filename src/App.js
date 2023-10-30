@@ -9,7 +9,7 @@ import SideBar from "./Components/SideBar";
 import NavBar from "./Components/NavBar";
 
 const App = () => {
-	const construction = true;
+	const construction = false;
 	const notFound = false;
 	return construction ? (
 		<MainCont>
