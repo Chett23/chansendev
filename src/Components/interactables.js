@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { macRed, main } from "./theme";
+import { main } from "./theme";
 
 export const ButtonCont = styled.div`
 	display: flex;

@@ -4,11 +4,11 @@ import { Col, Row, SkillCont, SkillsRow } from "../Components/containers";
 import { Title, Text } from "../Components/text";
 import { skills } from "../Components/data";
 
-function About() {
+const About = () => {
 	return (
 		<Col id="about" name="about" margin="50px 0">
 			<Row width="85%">
-				<Col width="50%" margin="25px">
+				<Col width="50%" margin="50px">
 					<Title>About Me</Title>
 					<Text>
 						As a Web Developer I have put my determination and quick
@@ -23,17 +23,17 @@ function About() {
 						ways to improve security posture.
 					</Text>
 				</Col>
-				<Col width="50%" margin="25px">
+				<Col width="50%" margin="50px">
 					<Title>Skills</Title>
 					<SkillsRow>
 						{skills.map((skill, i) => (
-							<SkillCont id={i}>{skill}</SkillCont>
+							<SkillCont key={i}>{skill}</SkillCont>
 						))}
 					</SkillsRow>
 				</Col>
 			</Row>
 		</Col>
 	);
-}
+};
 
 export default About;

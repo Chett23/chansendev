@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { blueSteel, macRed, main, mtnDew } from "./theme";
+import { blueSteel, main, mtnDew } from "./theme";
 
 export const Col = styled.div`
 	display: flex;
@@ -53,6 +53,7 @@ export const SkillCont = styled.div`
 	padding: 10px;
 	margin: 10px;
 	border-radius: 5px;
+    cursor: pointer;
 	&:hover {
         color: ${mtnDew}
 	}

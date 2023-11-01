@@ -8,3 +8,8 @@ export const Selfie = styled.img`
 	border-radius: 50%;
 	margin: 10px;
 `;
+
+export const ProjectPreview = styled.img`
+	width: 100%;
+	border-radius: 15px;
+`

@@ -19,7 +19,7 @@ export const skills = [
 	"Github",
 ];
 
-export const projects = [
+export const fakeProjects = [
 	{
 		name: "test 1",
 		imageUrl: "test",
