@@ -1,0 +1,94 @@
+[
+	{
+		"description": "This is a project simulating the dice needed to play a Role Playing game. Each dice roll is random, and it maintains the last few roles per dice to make multi-rolls simpler to handle.",
+		"name": "Dice Bag",
+		"id": "2dcd39ec-eccb-4256-87de-8f531a9fa380",
+		"stack": "React, Amplify, Aws",
+		"ProjectImages": {
+			"items": [
+				{
+					"name": "Dice Bag",
+					"url": "https://chester-images.s3.us-east-2.amazonaws.com/dicebag-applet.jpg"
+				}
+			]
+		}
+	},
+	{
+		"description": "A recreation of the Dicebag applet written in React Native and Expo.",
+		"name": "Dice Bag - React Native",
+		"id": "d5795e18-e363-4086-aa0e-2cfbbe31ed55",
+		"stack": "React, React Native, Expo",
+		"ProjectImages": {
+			"items": [
+				{
+					"name": "Dice Bag - React Native",
+					"url": "https://chester-images.s3.us-east-2.amazonaws.com/Dice+Bag+-+React+Native.png"
+				}
+			]
+		}
+	},
+	{
+		"description": "A collection of simple app created to exemplify various mechanisms while learning React.",
+		"name": "React Applets",
+		"id": "b875f1ed-10b5-4169-b596-0b94b60c2cde",
+		"stack": "React, React hooks, Amplify, React-Router",
+		"ProjectImages": {
+			"items": [
+				{
+					"name": "React Exercises",
+					"url": "https://chester-images.s3.us-east-2.amazonaws.com/react-exercises-applet.jpg"
+				}
+			]
+		}
+	},
+	{
+		"description": "United States Senators as of 2019. This projects exemplifies dynamic routing and universal state management. Using React, and React hooks to update state.",
+		"name": "United States Senators",
+		"id": "d7af6061-7743-4b27-8d4a-f6bc408c378a",
+		"stack": "React, React Native, React hooks",
+		"ProjectImages": {
+			"items": [
+				{
+					"name": "United States Senators",
+					"url": "https://chester-images.s3.us-east-2.amazonaws.com/senators-applet.jpg"
+				}
+			]
+		}
+	},
+	{
+		"description": "A general ecommerce store using react hooks to manage state, user logins and a persistant user specific cart. This site also features an admin portal to manage store contents and inventory.",
+		"name": "Ecommerce Store - React Hooks",
+		"id": "7953dbad-73f1-4761-9b3a-5214d15a8dce",
+		"stack": "React, React Native, React Hooks, cookie management, user authentication",
+		"ProjectImages": {
+			"items": [
+				{
+					"name": "Ecommerce Store - React Hooks",
+					"url": "https://chester-images.s3.us-east-2.amazonaws.com/The+Awesome+Store+-+V2.jpg"
+				}
+			]
+		}
+	},
+	{
+		"description": "A general ecommerce store using react state management and browser storage to enable persistant carts.",
+		"name": "Ecommerce Store",
+		"id": "9baf882e-39e7-4ef2-9ace-1aad488c03a6",
+		"stack": "React, React Native, local storage",
+		"ProjectImages": {
+			"items": [
+				{
+					"name": "Ecommerce Store",
+					"url": "https://chester-images.s3.us-east-2.amazonaws.com/The+Awesome+Store+-+V1.jpg"
+				}
+			]
+		}
+	},
+	{
+		"id": "1",
+		"name": "Test Project"
+	},
+	{
+		"id": "875f9ca5-bd9e-4a69-9d49-5208e70e6cd3",
+		"name": "minimadipisicin"
+	}
+]

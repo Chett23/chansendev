@@ -22,3 +22,9 @@ export const NavBarButtonCont = styled(ButtonCont)`
 	height: 45px;
 	max-height: 45px;
 `;
+
+export const NavButton = styled.a`
+	color: ${main};
+	text-decoration: none;
+	font-weight: bold;
+`

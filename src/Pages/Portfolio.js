@@ -65,7 +65,6 @@ const Portfolio = () => {
 
 	return (
 		<Col id="portfolio" name="portfolio" margin="50px 0">
-			<Title>Porfolio</Title>
 			{projects &&
 				projects.map((project, i) =>
 					i % 2 == 0 ? (

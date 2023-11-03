@@ -1,19 +1,19 @@
 import React from "react";
 
 import { NavBarCont } from "./containers";
-import { NavBarButtonCont } from "./interactables";
+import { NavBarButtonCont, NavButton } from "./interactables";
 
 const NavBar = () => {
 	return (
 		<NavBarCont>
 			<NavBarButtonCont>
-				<a href="#home">Home</a>
+				<NavButton href="#home">Home</NavButton>
 			</NavBarButtonCont>
 			<NavBarButtonCont>
-				<a href="#portfolio">Portfolio</a>
+				<NavButton href="#portfolio">Portfolio</NavButton>
 			</NavBarButtonCont>
 			<NavBarButtonCont>
-				<a href="#about">About</a>
+				<NavButton href="#about">About</NavButton>
 			</NavBarButtonCont>
 			{/* <NavBarButtonCont href="#contact">Contact</NavBarButtonCont> */}
 		</NavBarCont>

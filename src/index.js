@@ -12,6 +12,7 @@ Amplify.configure({
 	aws_appsync_region: awsExport.aws_appsync_region,
 	aws_appsync_authenticationType: awsExport.aws_appsync_authenticationType,
 	aws_appsync_apiKey: awsExport.aws_appsync_apiKey,
+	aws
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
