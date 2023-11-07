@@ -51,11 +51,17 @@ const RightSidedProject = ({ project }) => {
 
 const Portfolio = () => {
 	const [projects, setProjects] = useState([]);
+	const [errors, setErrors] = useState([]);
 
 	const getProjects = async () => {
 		const response = await API.graphql({
 			query: listProjects,
 		});
+		console.log(response);
+		if (response.errors) {
+			console.log(response.errors);
+			setErrors(response.errors);
+		}
 		setProjects(response.data.listProjects.items);
 	};
 
@@ -65,6 +71,7 @@ const Portfolio = () => {
 
 	return (
 		<Col id="portfolio" name="portfolio" margin="50px 0">
+			{errors && <Text>{errors}</Text>}
 			{projects &&
 				projects.map((project, i) =>
 					i % 2 == 0 ? (
