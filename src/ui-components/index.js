@@ -5,5 +5,7 @@
  **************************************************************************/
 
 export { default as ProjectCreateForm } from "./ProjectCreateForm";
+export { default as ProjectImageCreateForm } from "./ProjectImageCreateForm";
+export { default as ProjectImageUpdateForm } from "./ProjectImageUpdateForm";
 export { default as ProjectUpdateForm } from "./ProjectUpdateForm";
 export { default as studioTheme } from "./studioTheme";
