@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { Amplify } from "aws-amplify";
-import awsExport from "./aws-exports";
 
 Amplify.configure({
 	aws_appsync_graphqlEndpoint: process.env.REACT_APP_GRAPHQL_ENDPOINT,
