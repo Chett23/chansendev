@@ -2,160 +2,115 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateProjectImage = /* GraphQL */ `
-  subscription OnCreateProjectImage {
-    onCreateProjectImage {
+  subscription OnCreateProjectImage(
+    $filter: ModelSubscriptionProjectImageFilterInput
+  ) {
+    onCreateProjectImage(filter: $filter) {
       id
       url
       name
-      projectID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       __typename
     }
   }
 `;
 export const onUpdateProjectImage = /* GraphQL */ `
-  subscription OnUpdateProjectImage {
-    onUpdateProjectImage {
+  subscription OnUpdateProjectImage(
+    $filter: ModelSubscriptionProjectImageFilterInput
+  ) {
+    onUpdateProjectImage(filter: $filter) {
       id
       url
       name
-      projectID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       __typename
     }
   }
 `;
 export const onDeleteProjectImage = /* GraphQL */ `
-  subscription OnDeleteProjectImage {
-    onDeleteProjectImage {
+  subscription OnDeleteProjectImage(
+    $filter: ModelSubscriptionProjectImageFilterInput
+  ) {
+    onDeleteProjectImage(filter: $filter) {
       id
       url
       name
-      projectID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       __typename
     }
   }
 `;
 export const onCreateProject = /* GraphQL */ `
-  subscription OnCreateProject {
-    onCreateProject {
+  subscription OnCreateProject($filter: ModelSubscriptionProjectFilterInput) {
+    onCreateProject(filter: $filter) {
       id
       name
       description
       stack
-      ProjectImages {
-        nextToken
-        startedAt
+      priority
+      url
+      ProjectImage {
+        id
+        url
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      projectProjectImageId
       __typename
     }
   }
 `;
 export const onUpdateProject = /* GraphQL */ `
-  subscription OnUpdateProject {
-    onUpdateProject {
+  subscription OnUpdateProject($filter: ModelSubscriptionProjectFilterInput) {
+    onUpdateProject(filter: $filter) {
       id
       name
       description
       stack
-      ProjectImages {
-        nextToken
-        startedAt
+      priority
+      url
+      ProjectImage {
+        id
+        url
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      projectProjectImageId
       __typename
     }
   }
 `;
 export const onDeleteProject = /* GraphQL */ `
-  subscription OnDeleteProject {
-    onDeleteProject {
+  subscription OnDeleteProject($filter: ModelSubscriptionProjectFilterInput) {
+    onDeleteProject(filter: $filter) {
       id
       name
       description
       stack
-      ProjectImages {
-        nextToken
-        startedAt
+      priority
+      url
+      ProjectImage {
+        id
+        url
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const onCreateTest = /* GraphQL */ `
-  subscription OnCreateTest {
-    onCreateTest {
-      id
-      name
-      description
-      stack
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateTest = /* GraphQL */ `
-  subscription OnUpdateTest {
-    onUpdateTest {
-      id
-      name
-      description
-      stack
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteTest = /* GraphQL */ `
-  subscription OnDeleteTest {
-    onDeleteTest {
-      id
-      name
-      description
-      stack
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      projectProjectImageId
       __typename
     }
   }

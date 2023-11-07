@@ -9,8 +9,8 @@ import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { API } from "aws-amplify";
-import { createProject } from "../graphql/mutations";
-export default function ProjectCreateForm(props) {
+import { createProjectImage } from "../graphql/mutations";
+export default function ProjectImageCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -22,34 +22,20 @@ export default function ProjectCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    name: "",
-    description: "",
-    stack: "",
-    priority: "",
     url: "",
+    name: "",
   };
-  const [name, setName] = React.useState(initialValues.name);
-  const [description, setDescription] = React.useState(
-    initialValues.description
-  );
-  const [stack, setStack] = React.useState(initialValues.stack);
-  const [priority, setPriority] = React.useState(initialValues.priority);
   const [url, setUrl] = React.useState(initialValues.url);
+  const [name, setName] = React.useState(initialValues.name);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setName(initialValues.name);
-    setDescription(initialValues.description);
-    setStack(initialValues.stack);
-    setPriority(initialValues.priority);
     setUrl(initialValues.url);
+    setName(initialValues.name);
     setErrors({});
   };
   const validations = {
-    name: [{ type: "Required" }],
-    description: [{ type: "Required" }],
-    stack: [],
-    priority: [],
     url: [],
+    name: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -77,11 +63,8 @@ export default function ProjectCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          name,
-          description,
-          stack,
-          priority,
           url,
+          name,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -112,7 +95,7 @@ export default function ProjectCreateForm(props) {
             }
           });
           await API.graphql({
-            query: createProject.replaceAll("__typename", ""),
+            query: createProjectImage.replaceAll("__typename", ""),
             variables: {
               input: {
                 ...modelFields,
@@ -132,121 +115,9 @@ export default function ProjectCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "ProjectCreateForm")}
+      {...getOverrideProps(overrides, "ProjectImageCreateForm")}
       {...rest}
     >
-      <TextField
-        label="Name"
-        isRequired={true}
-        isReadOnly={false}
-        value={name}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name: value,
-              description,
-              stack,
-              priority,
-              url,
-            };
-            const result = onChange(modelFields);
-            value = result?.name ?? value;
-          }
-          if (errors.name?.hasError) {
-            runValidationTasks("name", value);
-          }
-          setName(value);
-        }}
-        onBlur={() => runValidationTasks("name", name)}
-        errorMessage={errors.name?.errorMessage}
-        hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
-      ></TextField>
-      <TextField
-        label="Description"
-        isRequired={true}
-        isReadOnly={false}
-        value={description}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description: value,
-              stack,
-              priority,
-              url,
-            };
-            const result = onChange(modelFields);
-            value = result?.description ?? value;
-          }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
-          }
-          setDescription(value);
-        }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
-      ></TextField>
-      <TextField
-        label="Stack"
-        isRequired={false}
-        isReadOnly={false}
-        value={stack}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              stack: value,
-              priority,
-              url,
-            };
-            const result = onChange(modelFields);
-            value = result?.stack ?? value;
-          }
-          if (errors.stack?.hasError) {
-            runValidationTasks("stack", value);
-          }
-          setStack(value);
-        }}
-        onBlur={() => runValidationTasks("stack", stack)}
-        errorMessage={errors.stack?.errorMessage}
-        hasError={errors.stack?.hasError}
-        {...getOverrideProps(overrides, "stack")}
-      ></TextField>
-      <TextField
-        label="Priority"
-        isRequired={false}
-        isReadOnly={false}
-        value={priority}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              description,
-              stack,
-              priority: value,
-              url,
-            };
-            const result = onChange(modelFields);
-            value = result?.priority ?? value;
-          }
-          if (errors.priority?.hasError) {
-            runValidationTasks("priority", value);
-          }
-          setPriority(value);
-        }}
-        onBlur={() => runValidationTasks("priority", priority)}
-        errorMessage={errors.priority?.errorMessage}
-        hasError={errors.priority?.hasError}
-        {...getOverrideProps(overrides, "priority")}
-      ></TextField>
       <TextField
         label="Url"
         isRequired={false}
@@ -256,11 +127,8 @@ export default function ProjectCreateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
-              description,
-              stack,
-              priority,
               url: value,
+              name,
             };
             const result = onChange(modelFields);
             value = result?.url ?? value;
@@ -274,6 +142,31 @@ export default function ProjectCreateForm(props) {
         errorMessage={errors.url?.errorMessage}
         hasError={errors.url?.hasError}
         {...getOverrideProps(overrides, "url")}
+      ></TextField>
+      <TextField
+        label="Name"
+        isRequired={false}
+        isReadOnly={false}
+        value={name}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              url,
+              name: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.name ?? value;
+          }
+          if (errors.name?.hasError) {
+            runValidationTasks("name", value);
+          }
+          setName(value);
+        }}
+        onBlur={() => runValidationTasks("name", name)}
+        errorMessage={errors.name?.errorMessage}
+        hasError={errors.name?.hasError}
+        {...getOverrideProps(overrides, "name")}
       ></TextField>
       <Flex
         justifyContent="space-between"

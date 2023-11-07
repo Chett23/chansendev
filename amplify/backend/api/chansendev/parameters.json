@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "chansendev",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-11-07T22:05:06.639Z"
+}

@@ -6,7 +6,6 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { Project } from "../models";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -26,11 +25,15 @@ export declare type ProjectUpdateFormInputValues = {
     name?: string;
     description?: string;
     stack?: string;
+    priority?: string;
+    url?: string;
 };
 export declare type ProjectUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
     description?: ValidationFunction<string>;
     stack?: ValidationFunction<string>;
+    priority?: ValidationFunction<string>;
+    url?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ProjectUpdateFormOverridesProps = {
@@ -38,12 +41,14 @@ export declare type ProjectUpdateFormOverridesProps = {
     name?: PrimitiveOverrideProps<TextFieldProps>;
     description?: PrimitiveOverrideProps<TextFieldProps>;
     stack?: PrimitiveOverrideProps<TextFieldProps>;
+    priority?: PrimitiveOverrideProps<TextFieldProps>;
+    url?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ProjectUpdateFormProps = React.PropsWithChildren<{
     overrides?: ProjectUpdateFormOverridesProps | undefined | null;
 } & {
     id?: string;
-    project?: Project;
+    project?: any;
     onSubmit?: (fields: ProjectUpdateFormInputValues) => ProjectUpdateFormInputValues;
     onSuccess?: (fields: ProjectUpdateFormInputValues) => void;
     onError?: (fields: ProjectUpdateFormInputValues, errorMessage: string) => void;

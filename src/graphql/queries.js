@@ -7,12 +7,8 @@ export const getProjectImage = /* GraphQL */ `
 			id
 			url
 			name
-			projectID
 			createdAt
 			updatedAt
-			_version
-			_deleted
-			_lastChangedAt
 			__typename
 		}
 	}
@@ -32,47 +28,11 @@ export const listProjectImages = /* GraphQL */ `
 				id
 				url
 				name
-				projectID
 				createdAt
 				updatedAt
-				_version
-				_deleted
-				_lastChangedAt
 				__typename
 			}
 			nextToken
-			startedAt
-			__typename
-		}
-	}
-`;
-export const syncProjectImages = /* GraphQL */ `
-	query SyncProjectImages(
-		$filter: ModelProjectImageFilterInput
-		$limit: Int
-		$nextToken: String
-		$lastSync: AWSTimestamp
-	) {
-		syncProjectImages(
-			filter: $filter
-			limit: $limit
-			nextToken: $nextToken
-			lastSync: $lastSync
-		) {
-			items {
-				id
-				url
-				name
-				projectID
-				createdAt
-				updatedAt
-				_version
-				_deleted
-				_lastChangedAt
-				__typename
-			}
-			nextToken
-			startedAt
 			__typename
 		}
 	}
@@ -84,16 +44,19 @@ export const getProject = /* GraphQL */ `
 			name
 			description
 			stack
-			ProjectImages {
-				nextToken
-				startedAt
+			priority
+			url
+			ProjectImage {
+				id
+				url
+				name
+				createdAt
+				updatedAt
 				__typename
 			}
 			createdAt
 			updatedAt
-			_version
-			_deleted
-			_lastChangedAt
+			projectProjectImageId
 			__typename
 		}
 	}
@@ -110,126 +73,22 @@ export const listProjects = /* GraphQL */ `
 				name
 				description
 				stack
+				priority
+				url
 				createdAt
 				updatedAt
-				ProjectImages {
-					items {
-						id
-						name
-						projectID
-						url
-					}
-				}
-				_version
-				_deleted
-				_lastChangedAt
-				__typename
-			}
-			nextToken
-			startedAt
-			__typename
-		}
-	}
-`;
-export const syncProjects = /* GraphQL */ `
-	query SyncProjects(
-		$filter: ModelProjectFilterInput
-		$limit: Int
-		$nextToken: String
-		$lastSync: AWSTimestamp
-	) {
-		syncProjects(
-			filter: $filter
-			limit: $limit
-			nextToken: $nextToken
-			lastSync: $lastSync
-		) {
-			items {
+				projectProjectImageId
+        ProjectImage {
 				id
+				url
 				name
-				description
-				stack
 				createdAt
 				updatedAt
-				_version
-				_deleted
-				_lastChangedAt
+				__typename
+			}
 				__typename
 			}
 			nextToken
-			startedAt
-			__typename
-		}
-	}
-`;
-export const getTest = /* GraphQL */ `
-	query GetTest($id: ID!) {
-		getTest(id: $id) {
-			id
-			name
-			description
-			stack
-			createdAt
-			updatedAt
-			_version
-			_deleted
-			_lastChangedAt
-			__typename
-		}
-	}
-`;
-export const listTests = /* GraphQL */ `
-	query ListTests(
-		$filter: ModelTestFilterInput
-		$limit: Int
-		$nextToken: String
-	) {
-		listTests(filter: $filter, limit: $limit, nextToken: $nextToken) {
-			items {
-				id
-				name
-				description
-				stack
-				createdAt
-				updatedAt
-				_version
-				_deleted
-				_lastChangedAt
-				__typename
-			}
-			nextToken
-			startedAt
-			__typename
-		}
-	}
-`;
-export const syncTests = /* GraphQL */ `
-	query SyncTests(
-		$filter: ModelTestFilterInput
-		$limit: Int
-		$nextToken: String
-		$lastSync: AWSTimestamp
-	) {
-		syncTests(
-			filter: $filter
-			limit: $limit
-			nextToken: $nextToken
-			lastSync: $lastSync
-		) {
-			items {
-				id
-				name
-				description
-				stack
-				createdAt
-				updatedAt
-				_version
-				_deleted
-				_lastChangedAt
-				__typename
-			}
-			nextToken
-			startedAt
 			__typename
 		}
 	}

@@ -10,12 +10,8 @@ export const createProjectImage = /* GraphQL */ `
       id
       url
       name
-      projectID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       __typename
     }
   }
@@ -29,12 +25,8 @@ export const updateProjectImage = /* GraphQL */ `
       id
       url
       name
-      projectID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       __typename
     }
   }
@@ -48,12 +40,8 @@ export const deleteProjectImage = /* GraphQL */ `
       id
       url
       name
-      projectID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       __typename
     }
   }
@@ -68,16 +56,19 @@ export const createProject = /* GraphQL */ `
       name
       description
       stack
-      ProjectImages {
-        nextToken
-        startedAt
+      priority
+      url
+      ProjectImage {
+        id
+        url
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      projectProjectImageId
       __typename
     }
   }
@@ -92,16 +83,19 @@ export const updateProject = /* GraphQL */ `
       name
       description
       stack
-      ProjectImages {
-        nextToken
-        startedAt
+      priority
+      url
+      ProjectImage {
+        id
+        url
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      projectProjectImageId
       __typename
     }
   }
@@ -116,73 +110,19 @@ export const deleteProject = /* GraphQL */ `
       name
       description
       stack
-      ProjectImages {
-        nextToken
-        startedAt
+      priority
+      url
+      ProjectImage {
+        id
+        url
+        name
+        createdAt
+        updatedAt
         __typename
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const createTest = /* GraphQL */ `
-  mutation CreateTest(
-    $input: CreateTestInput!
-    $condition: ModelTestConditionInput
-  ) {
-    createTest(input: $input, condition: $condition) {
-      id
-      name
-      description
-      stack
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const updateTest = /* GraphQL */ `
-  mutation UpdateTest(
-    $input: UpdateTestInput!
-    $condition: ModelTestConditionInput
-  ) {
-    updateTest(input: $input, condition: $condition) {
-      id
-      name
-      description
-      stack
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const deleteTest = /* GraphQL */ `
-  mutation DeleteTest(
-    $input: DeleteTestInput!
-    $condition: ModelTestConditionInput
-  ) {
-    deleteTest(input: $input, condition: $condition) {
-      id
-      name
-      description
-      stack
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      projectProjectImageId
       __typename
     }
   }

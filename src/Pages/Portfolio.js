@@ -1,24 +1,19 @@
 import React from "react";
 import { API } from "aws-amplify";
-import { listProjects, listThings } from "../graphql/queries";
+import { listProjects } from "../graphql/queries";
 import { useState, useEffect } from "react";
 import { Col, Row } from "../Components/containers";
 import { Title, Text } from "../Components/text";
-import { fakeProjects } from "../Components/data";
 import { ProjectPreview } from "../Components/images";
 
 const LeftSidedProject = ({ project }) => {
 	return (
 		<Row width="85%" key={project.id}>
 			<Col width="50%" margin="25px">
-				{project.ProjectImages.items.length > 0 &&
-					project.ProjectImages.items.map((image, i) => (
-						<ProjectPreview
-							src={image.url}
-							key={i}
-							title={project.stack}
-						/>
-					))}
+				<ProjectPreview
+					src={project.ProjectImage.url}
+					title={project.stack}
+				/>
 			</Col>
 			<Col width="50%" margin="25px">
 				<Title>{project.name}</Title>
@@ -36,14 +31,10 @@ const RightSidedProject = ({ project }) => {
 				<Text>{project.description}</Text>
 			</Col>
 			<Col width="50%" margin="25px">
-				{project.ProjectImages.items.length > 0 &&
-					project.ProjectImages.items.map((image, i) => (
-						<ProjectPreview
-							src={image.url}
-							key={i}
-							title={project.stack}
-						/>
-					))}
+				<ProjectPreview
+					src={project.ProjectImage.url}
+					title={project.stack}
+				/>
 			</Col>
 		</Row>
 	);
@@ -51,7 +42,6 @@ const RightSidedProject = ({ project }) => {
 
 const Portfolio = () => {
 	const [projects, setProjects] = useState([]);
-	const [errors, setErrors] = useState([]);
 
 	const getProjects = async () => {
 		const response = await API.graphql({
@@ -66,15 +56,22 @@ const Portfolio = () => {
 
 	return (
 		<Col id="portfolio" name="portfolio" margin="50px 0">
-			{errors && <Text>{errors}</Text>}
 			{projects &&
-				projects.map((project, i) =>
-					i % 2 == 0 ? (
-						<LeftSidedProject project={project} key={project.id} />
-					) : (
-						<RightSidedProject project={project} key={project.id} />
-					)
-				)}
+				projects
+					.sort((a, b) => a.priority - b.priority)
+					.map((project, i) =>
+						i % 2 == 0 ? (
+							<LeftSidedProject
+								project={project}
+								key={project.id}
+							/>
+						) : (
+							<RightSidedProject
+								project={project}
+								key={project.id}
+							/>
+						)
+					)}
 		</Col>
 	);
 };

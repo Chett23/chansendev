@@ -7,9 +7,10 @@
 /* eslint-disable */
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { Project } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { DataStore } from "aws-amplify";
+import { API } from "aws-amplify";
+import { getProject } from "../graphql/queries";
+import { updateProject } from "../graphql/mutations";
 export default function ProjectUpdateForm(props) {
   const {
     id: idProp,
@@ -26,12 +27,16 @@ export default function ProjectUpdateForm(props) {
     name: "",
     description: "",
     stack: "",
+    priority: "",
+    url: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [description, setDescription] = React.useState(
     initialValues.description
   );
   const [stack, setStack] = React.useState(initialValues.stack);
+  const [priority, setPriority] = React.useState(initialValues.priority);
+  const [url, setUrl] = React.useState(initialValues.url);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = projectRecord
@@ -40,13 +45,20 @@ export default function ProjectUpdateForm(props) {
     setName(cleanValues.name);
     setDescription(cleanValues.description);
     setStack(cleanValues.stack);
+    setPriority(cleanValues.priority);
+    setUrl(cleanValues.url);
     setErrors({});
   };
   const [projectRecord, setProjectRecord] = React.useState(projectModelProp);
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
-        ? await DataStore.query(Project, idProp)
+        ? (
+            await API.graphql({
+              query: getProject.replaceAll("__typename", ""),
+              variables: { id: idProp },
+            })
+          )?.data?.getProject
         : projectModelProp;
       setProjectRecord(record);
     };
@@ -54,9 +66,11 @@ export default function ProjectUpdateForm(props) {
   }, [idProp, projectModelProp]);
   React.useEffect(resetStateValues, [projectRecord]);
   const validations = {
-    name: [],
-    description: [],
+    name: [{ type: "Required" }],
+    description: [{ type: "Required" }],
     stack: [],
+    priority: [],
+    url: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -86,7 +100,9 @@ export default function ProjectUpdateForm(props) {
         let modelFields = {
           name,
           description,
-          stack,
+          stack: stack ?? null,
+          priority: priority ?? null,
+          url: url ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -116,17 +132,22 @@ export default function ProjectUpdateForm(props) {
               modelFields[key] = null;
             }
           });
-          await DataStore.save(
-            Project.copyOf(projectRecord, (updated) => {
-              Object.assign(updated, modelFields);
-            })
-          );
+          await API.graphql({
+            query: updateProject.replaceAll("__typename", ""),
+            variables: {
+              input: {
+                id: projectRecord.id,
+                ...modelFields,
+              },
+            },
+          });
           if (onSuccess) {
             onSuccess(modelFields);
           }
         } catch (err) {
           if (onError) {
-            onError(modelFields, err.message);
+            const messages = err.errors.map((e) => e.message).join("\n");
+            onError(modelFields, messages);
           }
         }
       }}
@@ -135,7 +156,7 @@ export default function ProjectUpdateForm(props) {
     >
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -145,6 +166,8 @@ export default function ProjectUpdateForm(props) {
               name: value,
               description,
               stack,
+              priority,
+              url,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -161,7 +184,7 @@ export default function ProjectUpdateForm(props) {
       ></TextField>
       <TextField
         label="Description"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={description}
         onChange={(e) => {
@@ -171,6 +194,8 @@ export default function ProjectUpdateForm(props) {
               name,
               description: value,
               stack,
+              priority,
+              url,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -197,6 +222,8 @@ export default function ProjectUpdateForm(props) {
               name,
               description,
               stack: value,
+              priority,
+              url,
             };
             const result = onChange(modelFields);
             value = result?.stack ?? value;
@@ -210,6 +237,62 @@ export default function ProjectUpdateForm(props) {
         errorMessage={errors.stack?.errorMessage}
         hasError={errors.stack?.hasError}
         {...getOverrideProps(overrides, "stack")}
+      ></TextField>
+      <TextField
+        label="Priority"
+        isRequired={false}
+        isReadOnly={false}
+        value={priority}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              description,
+              stack,
+              priority: value,
+              url,
+            };
+            const result = onChange(modelFields);
+            value = result?.priority ?? value;
+          }
+          if (errors.priority?.hasError) {
+            runValidationTasks("priority", value);
+          }
+          setPriority(value);
+        }}
+        onBlur={() => runValidationTasks("priority", priority)}
+        errorMessage={errors.priority?.errorMessage}
+        hasError={errors.priority?.hasError}
+        {...getOverrideProps(overrides, "priority")}
+      ></TextField>
+      <TextField
+        label="Url"
+        isRequired={false}
+        isReadOnly={false}
+        value={url}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              description,
+              stack,
+              priority,
+              url: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.url ?? value;
+          }
+          if (errors.url?.hasError) {
+            runValidationTasks("url", value);
+          }
+          setUrl(value);
+        }}
+        onBlur={() => runValidationTasks("url", url)}
+        errorMessage={errors.url?.errorMessage}
+        hasError={errors.url?.hasError}
+        {...getOverrideProps(overrides, "url")}
       ></TextField>
       <Flex
         justifyContent="space-between"
