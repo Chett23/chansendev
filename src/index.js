@@ -8,10 +8,10 @@ import { Amplify } from "aws-amplify";
 import awsExport from "./aws-exports";
 
 Amplify.configure({
-	aws_appsync_graphqlEndpoint: awsExport.aws_appsync_graphqlEndpoint,
-	aws_appsync_region: awsExport.aws_appsync_region,
-	aws_appsync_authenticationType: awsExport.aws_appsync_authenticationType,
-	aws_appsync_apiKey: awsExport.aws_appsync_apiKey,
+	aws_appsync_graphqlEndpoint: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+	aws_appsync_region: process.env.REACT_APP_APPSYNC_REGION,
+	aws_appsync_authenticationType: process.env.REACT_APP_APPSYNC_AUTH_TYPE,
+	aws_appsync_apiKey: process.env.REACT_APP_APPSYNC_API_KEY,
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

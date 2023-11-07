@@ -57,11 +57,6 @@ const Portfolio = () => {
 		const response = await API.graphql({
 			query: listProjects,
 		});
-		console.log(response);
-		if (response.errors) {
-			console.log(response.errors);
-			setErrors(response.errors);
-		}
 		setProjects(response.data.listProjects.items);
 	};
 
