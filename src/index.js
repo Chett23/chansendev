@@ -2,20 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-// import UnderConstruction from "./Pages/UnderConstruction";
 import reportWebVitals from "./reportWebVitals";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// const router = createBrowserRouter([
-// 	{
-// 		path: "/",
-// 		element: <App />,
-// 	},
-// 	{
-// 		path: "/under-construction",
-// 		element: <UnderConstruction />,
-// 	},
-// ]);
+import { Amplify } from "aws-amplify";
+import awsExport from "./aws-exports";
+
+Amplify.configure({
+	aws_appsync_graphqlEndpoint: awsExport.aws_appsync_graphqlEndpoint,
+	aws_appsync_region: awsExport.aws_appsync_region,
+	aws_appsync_authenticationType: awsExport.aws_appsync_authenticationType,
+	aws_appsync_apiKey: awsExport.aws_appsync_apiKey,
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

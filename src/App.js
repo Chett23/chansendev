@@ -1,4 +1,6 @@
 import "./App.css";
+import { useEffect, useState } from "react";
+
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Portfolio from "./Pages/Portfolio";
@@ -9,7 +11,7 @@ import SideBar from "./Components/SideBar";
 import NavBar from "./Components/NavBar";
 
 const App = () => {
-	const construction = true;
+	const construction = false;
 	const notFound = false;
 	return construction ? (
 		<MainCont>

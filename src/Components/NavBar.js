@@ -1,17 +1,23 @@
-import React from 'react'
+import React from "react";
 
 import { NavBarCont } from "./containers";
-import { NavBarButtonCont } from "./interactables";
+import { NavBarButtonCont, NavButton } from "./interactables";
 
 const NavBar = () => {
-  return (
-	<NavBarCont>
-		<NavBarButtonCont>Home</NavBarButtonCont>
-		<NavBarButtonCont>Portfolio</NavBarButtonCont>
-		<NavBarButtonCont>About</NavBarButtonCont>
-		<NavBarButtonCont>Contact</NavBarButtonCont>
-	</NavBarCont>
-  )
-}
+	return (
+		<NavBarCont>
+			<NavBarButtonCont>
+				<NavButton href="#home">Home</NavButton>
+			</NavBarButtonCont>
+			<NavBarButtonCont>
+				<NavButton href="#portfolio">Portfolio</NavButton>
+			</NavBarButtonCont>
+			<NavBarButtonCont>
+				<NavButton href="#about">About</NavButton>
+			</NavBarButtonCont>
+			{/* <NavBarButtonCont href="#contact">Contact</NavBarButtonCont> */}
+		</NavBarCont>
+	);
+};
 
-export default NavBar
+export default NavBar;
