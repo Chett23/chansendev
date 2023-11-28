@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { blueSteel, main, mtnDew } from "./theme";
 
 export const Col = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: ${({ margin }) => margin || "auto"};
-	width: ${({ width }) => width};
+	width: ${({ width }) => width || "100%"};
 `;
 
 export const Row = styled.div`
@@ -15,32 +13,44 @@ export const Row = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	width: ${({ width }) => width};
+	width: ${({ width }) => width || "100%"};
 `;
 
-export const MainCont = styled(Col)`
-	background-color: ${main};
+export const MainCont = styled(Row)`
+	background-color: ${(props) => props.theme.background};
 	min-height: 100vh;
-	color: ${mtnDew};
+	color: ${(props) => props.theme.primary};
 `;
 
 export const SideBarCont = styled(Col)`
 	position: fixed;
-	top: calc(50% - 62.5px);
+	top: 0;
 	left: 0;
-	height: 125px;
-	width: 45px;
-	z-index: 10;
-	background-color: ${blueSteel};
+	justify-content: space-around;
+	align-items: flex-start;
+	margin: 50px;
+	max-width: 25%;
+	height: calc(90vh - 50px);
 `;
 
-export const NavBarCont = styled(Row)`
-	position: fixed;
-	height: 55px;
-	top: 0;
-	width: 100%;
-	z-index: 10;
-	background-color: ${blueSteel};
+export const NavBarCont = styled(Col)`
+	padding: 25px;
+	align-items: flex-start;
+
+	a:hover {
+		color: ${(props) => props.theme.accent};
+	}
+`;
+export const FooterCont = styled(Row)`
+	flex-grow: 2;
+	padding: 25px;
+	gap: 25px;
+	align-items: flex-end;
+`;
+
+export const HeaderCont = styled(Col)`
+	padding: 25px;
+	align-items: flex-start;
 `;
 
 export const SkillsRow = styled(Row)`
@@ -48,13 +58,34 @@ export const SkillsRow = styled(Row)`
 `;
 
 export const SkillCont = styled.div`
-	background-color: ${blueSteel};
-	color: ${main};
+	background-color: ${(props) => props.theme.accent};
+	color: ${(props) => props.theme.text};
 	padding: 10px;
 	margin: 10px;
 	border-radius: 5px;
-    cursor: pointer;
+	cursor: pointer;
+
 	&:hover {
-        color: ${mtnDew}
+		color: ${(props) => props.theme.accent};
 	}
 `;
+
+export const ThemeSelectorCont = styled.div`
+	padding: 5px;
+	margin: 5px;
+	border-radius: 10px;
+	cursor: pointer;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 10;
+	&:hover {
+		color: ${(props) => props.theme.accent};
+	}
+`;
+
+export const ContentCont = styled(Col)`
+	width: 55vw;
+	margin-left: calc(100vw - 55vw);
+`;
+

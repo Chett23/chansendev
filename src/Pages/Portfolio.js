@@ -55,8 +55,8 @@ const Portfolio = () => {
 	}, []);
 
 	return (
-		<Col id="portfolio" name="portfolio" margin="50px 0">
-			{projects &&
+		<Col id="portfolio" name="portfolio">
+			{projects ?
 				projects
 					.sort((a, b) => a.priority - b.priority)
 					.map((project, i) =>
@@ -71,7 +71,7 @@ const Portfolio = () => {
 								key={project.id}
 							/>
 						)
-					)}
+					): <Text>Loading . . .</Text>}
 		</Col>
 	);
 };

@@ -15,7 +15,6 @@ const NavBar = () => {
 			<NavBarButtonCont>
 				<NavButton href="#about">About</NavButton>
 			</NavBarButtonCont>
-			{/* <NavBarButtonCont href="#contact">Contact</NavBarButtonCont> */}
 		</NavBarCont>
 	);
 };
