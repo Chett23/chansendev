@@ -2,13 +2,13 @@ import React from "react";
 import { API } from "aws-amplify";
 import { listProjects } from "../graphql/queries";
 import { useState, useEffect } from "react";
-import { Col, Row } from "../Components/containers";
+import { Col, PortfolioRow } from "../Components/containers";
 import { Title, Text } from "../Components/text";
 import { ProjectPreview } from "../Components/images";
 
 const LeftSidedProject = ({ project }) => {
 	return (
-		<Row width="85%" key={project.id}>
+		<PortfolioRow key={project.id}>
 			<Col width="50%" margin="25px">
 				<ProjectPreview
 					src={project.ProjectImage.url}
@@ -19,13 +19,13 @@ const LeftSidedProject = ({ project }) => {
 				<Title>{project.name}</Title>
 				<Text>{project.description}</Text>
 			</Col>
-		</Row>
+		</PortfolioRow>
 	);
 };
 
 const RightSidedProject = ({ project }) => {
 	return (
-		<Row width="85%" key={project.id}>
+		<PortfolioRow key={project.id}>
 			<Col width="50%" margin="25px">
 				<Title>{project.name}</Title>
 				<Text>{project.description}</Text>
@@ -36,7 +36,7 @@ const RightSidedProject = ({ project }) => {
 					title={project.stack}
 				/>
 			</Col>
-		</Row>
+		</PortfolioRow>
 	);
 };
 
@@ -60,7 +60,7 @@ const Portfolio = () => {
 				projects
 					.sort((a, b) => a.priority - b.priority)
 					.map((project, i) =>
-						i % 2 == 0 ? (
+						i % 2 === 0 ? (
 							<LeftSidedProject
 								project={project}
 								key={project.id}

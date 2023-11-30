@@ -27,4 +27,5 @@ export const NavButton = styled.a`
 	color: ${(props) => props.theme.text};
 	text-decoration: none;
 	font-weight: bold;
+	font-size: 18pt;
 `;

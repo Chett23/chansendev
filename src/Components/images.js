@@ -10,6 +10,6 @@ export const Selfie = styled.img`
 `;
 
 export const ProjectPreview = styled.img`
-	width: 100%;
+	width: 80%;
 	border-radius: 15px;
 `

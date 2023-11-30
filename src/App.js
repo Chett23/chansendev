@@ -7,6 +7,7 @@ import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import About from "./Pages/About";
 import Portfolio from "./Pages/Portfolio";
+import Experience from "./Pages/Experience";
 import UnderConstruction from "./Pages/UnderConstruction";
 import NotFound from "./Pages/NotFound";
 import {
@@ -14,6 +15,7 @@ import {
 	ThemeSelectorCont,
 	SideBarCont,
 	ContentCont,
+	Row
 } from "./Components/containers";
 import { colors } from "./Components/theme";
 
@@ -48,6 +50,7 @@ const App = () => {
 						</SideBarCont>
 						<ContentCont>
 							<About />
+							{/* <Experience /> */}
 							<Portfolio />
 						</ContentCont>
 					</>
