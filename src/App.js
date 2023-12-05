@@ -50,7 +50,7 @@ const App = () => {
 						</SideBarCont>
 						<ContentCont>
 							<About />
-							{/* <Experience /> */}
+							<Experience />
 							<Portfolio />
 						</ContentCont>
 					</>

@@ -1,6 +1,78 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getText = /* GraphQL */ `
+	query GetText($id: ID!) {
+		getText(id: $id) {
+			id
+			description
+			text
+			createdAt
+			updatedAt
+			__typename
+		}
+	}
+`;
+export const listTexts = /* GraphQL */ `
+	query ListTexts(
+		$filter: ModelTextFilterInput
+		$limit: Int
+		$nextToken: String
+	) {
+		listTexts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+			items {
+				id
+				description
+				text
+				createdAt
+				updatedAt
+				__typename
+			}
+			nextToken
+			__typename
+		}
+	}
+`;
+export const getExperience = /* GraphQL */ `
+	query GetExperience($id: ID!) {
+		getExperience(id: $id) {
+			id
+			timeFrame
+			title
+			description
+			tags
+			subTitles
+			company
+			createdAt
+			updatedAt
+			__typename
+		}
+	}
+`;
+export const listExperiences = /* GraphQL */ `
+	query ListExperiences(
+		$filter: ModelExperienceFilterInput
+		$limit: Int
+		$nextToken: String
+	) {
+		listExperiences(filter: $filter, limit: $limit, nextToken: $nextToken) {
+			items {
+				id
+				timeFrame
+				title
+				description
+				tags
+				subTitles
+				company
+				createdAt
+				updatedAt
+				__typename
+			}
+			nextToken
+			__typename
+		}
+	}
+`;
 export const getProjectImage = /* GraphQL */ `
 	query GetProjectImage($id: ID!) {
 		getProjectImage(id: $id) {
@@ -78,14 +150,14 @@ export const listProjects = /* GraphQL */ `
 				createdAt
 				updatedAt
 				projectProjectImageId
-        ProjectImage {
-				id
-				url
-				name
-				createdAt
-				updatedAt
-				__typename
-			}
+				ProjectImage {
+					id
+					url
+					name
+					createdAt
+					updatedAt
+					__typename
+				}
 				__typename
 			}
 			nextToken

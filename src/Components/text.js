@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Text = styled.span`
 	font-family: arial;
 	font-size: 14pt;
@@ -17,5 +16,5 @@ export const Title = styled(Text)`
 export const Medium = styled(Text)`
 	font-family: arial;
 	font-size: 18pt;
-	color: ${(props) => props.theme.secondary};
+	color: ${(props) => props.theme.accent};
 `;
