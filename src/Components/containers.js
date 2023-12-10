@@ -32,7 +32,7 @@ export const AppCont = styled(Row)`
 
 export const SideBarCont = styled(Col)`
 	position: sticky;
-	top: 0;
+	top: 50px;
 	left: 0;
 	justify-content: space-around;
 	align-items: flex-start;
@@ -95,7 +95,7 @@ export const ThemeSelectorCont = styled.div`
 export const ContentSectionCont = styled(Col)`
 	width: 55vw;
 	gap: 30px;
-	padding: 50px;
+	padding: 100px 50px;
 	margin-left: 75px;
 `;
 
