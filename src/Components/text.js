@@ -18,3 +18,7 @@ export const Medium = styled(Text)`
 	font-size: 18pt;
 	color: ${(props) => props.theme.accent};
 `;
+
+export const AccentText = styled(Text)`
+	color: ${props=> props.theme.secondary}
+`;

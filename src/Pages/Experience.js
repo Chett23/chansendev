@@ -4,12 +4,13 @@ import { listExperiences } from "../graphql/queries";
 import { useState, useEffect } from "react";
 import {
 	Col,
-	PortfolioRow,
-	PortfolioCont,
-	PortfolioItemInfoCont,
+	ContentCont,
+	ContentRow,
+	ContentItemInfoCont,
+	ContentMarginCont
 } from "../Components/containers";
-import { Title, Text, Medium } from "../Components/text";
-import { ProjectPreview } from "../Components/images";
+import { AccentText, Text, Medium } from "../Components/text";
+
 
 
 const Experience = () => {
@@ -28,25 +29,26 @@ const Experience = () => {
 	}, [projectsToShow]);
 
 	return (
-		<PortfolioCont id="experience" name="experience">
+		<ContentCont id="experience" name="experience">
 			{projects ? (
 				projects
 					.sort((a, b) => a.priority - b.priority)
 					.map((project, i) => i < projectsToShow && (
-						<PortfolioRow key={project.id}>
-							<PortfolioItemInfoCont>
+						<ContentRow key={project.id}>
+							<ContentMarginCont>
+								<AccentText>{project.timeFrame}</AccentText>
+							</ContentMarginCont>
+							<ContentItemInfoCont>
 								<Medium>{project.title}</Medium>
-								<Text>{project.copmany}</Text>
-							</PortfolioItemInfoCont>
-						</PortfolioRow>
+								<Text>{project.company}</Text>
+								<Text>{project.description}</Text>
+							</ContentItemInfoCont>
+						</ContentRow>
 					))
 			) : (
 				<Text>Loading . . .</Text>
-			)}
-			{projectsToShow < projects.length ? (
-				<Text onClick={() => setProjectsToShow(projects.length)} style={{cursor:'pointer'}}>Show More</Text>
-			) : <Text onClick={() => setProjectsToShow(4)} style={{cursor:'pointer'}}>Show Less</Text>}
-		</PortfolioCont>
+			)}			
+		</ContentCont>
 	);
 };
 

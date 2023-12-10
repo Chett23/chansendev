@@ -10,6 +10,9 @@ const NavBar = () => {
 				<NavButton href="#home">Home</NavButton>
 			</NavBarButtonCont>
 			<NavBarButtonCont>
+				<NavButton href="#experience">Experience</NavButton>
+			</NavBarButtonCont>
+			<NavBarButtonCont>
 				<NavButton href="#portfolio">Portfolio</NavButton>
 			</NavBarButtonCont>
 			<NavBarButtonCont>

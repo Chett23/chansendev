@@ -22,17 +22,20 @@ export const MainCont = styled(Row)`
 	background-color: ${(props) => props.theme.background};
 	min-height: 100vh;
 	justify-content: space-around;
-	padding: 
-	color: ${(props) => props.theme.primary};
+`;
+
+export const AppCont = styled(Row)`
+	justify-content: space-around;
+	align-items:flex-start;
+	max-width: 70%;
 `;
 
 export const SideBarCont = styled(Col)`
-	position: fixed;
+	position: sticky;
 	top: 0;
 	left: 0;
 	justify-content: space-around;
 	align-items: flex-start;
-	margin: 50px;
 	max-width: 25%;
 	height: calc(90vh - 50px);
 `;
@@ -89,29 +92,34 @@ export const ThemeSelectorCont = styled.div`
 	}
 `;
 
-export const ContentCont = styled(Col)`
+export const ContentSectionCont = styled(Col)`
 	width: 55vw;
 	gap: 30px;
 	padding: 50px;
-	margin-left: calc(100vw - 75vw);
+	margin-left: 75px;
 `;
 
-export const AboutCont = styled(Col)``;
 
-export const PortfolioCont = styled(Col)`
+export const ContentCont = styled(Col)`
 	gap: 25px;
 	align-items: flex-end;
 	justify-content: flex-start;
 `;
 
-export const PortfolioItemInfoCont = styled(Col)`
+export const ContentItemInfoCont = styled(Col)`
 	flex: 4;
 	max-width: 80%;
 	margin: 25px;
 	align-items: flex-start;
 `;
 
-export const PortfolioRow = styled(Row)`
+export const ContentMarginCont = styled(Col)`
+	flex: 1;
+	margin: 35px 10px;
+
+`;
+
+export const ContentRow = styled(Row)`
 	justify-content: space-around;
 	align-items: flex-start;
 	cursor: pointer;

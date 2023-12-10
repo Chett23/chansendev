@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Col, AboutCont, SkillCont, SkillsRow } from "../Components/containers";
+import { Col, SkillCont, SkillsRow } from "../Components/containers";
 import { Title, Text } from "../Components/text";
 
 const About = () => {
   return (
-    <AboutCont id="about" name="about" padding="50px">
+    <Col id="about" name="about" padding="50px">
       <Title>Hello there!</Title>
       <Text>
         As a Web Developer I have put my determination and quick learning to the
@@ -17,7 +17,7 @@ const About = () => {
         and innovative thinker, always seeking out new ways to improve security
         posture.
       </Text>
-    </AboutCont>
+    </Col>
   );
 };
 
