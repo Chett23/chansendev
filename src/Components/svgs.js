@@ -36,7 +36,7 @@ const SMLogo = styled(SMLogoSB)`
 // To disable warning about anchors needing content to be readable by screen reader
 // eslint-disable-next-line
 export const GithubSB = () => (
-	<a href={"https://github.com/Chett23"}>
+	<a href={"https://github.com/Chett23"} target='_blank'>
 		<SMLogoSB
 			aria-hidden="true"
 			focusable="false"
@@ -52,7 +52,7 @@ export const GithubSB = () => (
 );
 // eslint-disable-next-line
 export const Github = () => (
-	<a href={"https://github.com/Chett23"}>
+	<a href={"https://github.com/Chett23"} target='_blank'>
 		<SMLogo
 			aria-hidden="true"
 			focusable="false"
@@ -68,7 +68,7 @@ export const Github = () => (
 );
 // eslint-disable-next-line
 export const LinkedinSB = () => (
-	<a href={"https://www.linkedin.com/in/chester-hansen/"}>
+	<a href={"https://www.linkedin.com/in/chester-hansen/"} target='_blank'>
 		<SMLogoSB
 			aria-hidden="true"
 			focusable="false"
@@ -84,7 +84,7 @@ export const LinkedinSB = () => (
 );
 // eslint-disable-next-line
 export const Linkedin = () => (
-	<a href={"https://www.linkedin.com/in/chester-hansen/"}>
+	<a href={"https://www.linkedin.com/in/chester-hansen/"} target='_blank'>
 		<SMLogo
 			aria-hidden="true"
 			focusable="false"

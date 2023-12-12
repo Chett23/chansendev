@@ -62,6 +62,7 @@ export const listExperiences = /* GraphQL */ `
 				title
 				description
 				tags
+				url
 				subTitles
 				company
 				createdAt

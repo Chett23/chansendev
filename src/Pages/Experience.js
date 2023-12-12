@@ -7,47 +7,48 @@ import {
 	ContentCont,
 	ContentRow,
 	ContentItemInfoCont,
-	ContentMarginCont
+	ContentMarginCont,
 } from "../Components/containers";
 import { AccentText, Text, Medium } from "../Components/text";
 
-
-
 const Experience = () => {
-	const [projects, setProjects] = useState([]);
-	const [projectsToShow, setProjectsToShow] = useState(3);
+	const [experiences, setExperiences] = useState([]);
 
-	const getProjects = async () => {
+	const getExperiences = async () => {
 		const response = await API.graphql({
 			query: listExperiences,
 		});
-		setProjects(response.data.listExperiences.items);
+		setExperiences(response.data.listExperiences.items);
 	};
 
+
 	useEffect(() => {
-		getProjects();
-	}, [projectsToShow]);
+		getExperiences();
+	}, []);
 
 	return (
 		<ContentCont id="experience" name="experience">
-			{projects ? (
-				projects
+			{experiences ? (
+				experiences
 					.sort((a, b) => a.priority - b.priority)
-					.map((project, i) => i < projectsToShow && (
-						<ContentRow key={project.id}>
+					.map((experience, i) => (
+						<ContentRow
+							key={experience.id}
+							onClick={() => window.open(experience.url)}
+						>
 							<ContentMarginCont>
-								<AccentText>{project.timeFrame}</AccentText>
+								<AccentText>{experience.timeFrame}</AccentText>
 							</ContentMarginCont>
 							<ContentItemInfoCont>
-								<Medium>{project.title}</Medium>
-								<Text>{project.company}</Text>
-								<Text>{project.description}</Text>
+								<Medium>{experience.title}</Medium>
+								<Text>{experience.company}</Text>
+								<Text>{experience.description}</Text>
 							</ContentItemInfoCont>
 						</ContentRow>
 					))
 			) : (
 				<Text>Loading . . .</Text>
-			)}			
+			)}
 		</ContentCont>
 	);
 };

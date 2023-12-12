@@ -34,15 +34,8 @@ const App = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	// ref Management
 	const contentRefs = useRef([]);
-	const addRef = (el) => {
-		if (el && !contentRefs.current.includes(el)) {
-			contentRefs.current.push(el);
-		}
-	};
-	elementsTocheck.forEach((id) => {
-		const el = document.getElementById(id);
-		addRef(el);
-	});
+	contentRefs.current = [];
+
 	// Global Vars
 	const construction = false;
 	const notFound = false;
@@ -80,7 +73,18 @@ const App = () => {
 		}
 	};
 
-	useEffect(() => {}, [theme, scrollPosition]);
+	const addRef = (el) => {
+		if (el && !contentRefs.current.includes(el)) {
+			contentRefs.current.push(el);
+		}
+	};
+
+	useEffect(() => {
+		elementsTocheck.forEach((id) => {
+			const el = document.getElementById(id);
+			addRef(el);
+		});
+	}, [theme, scrollPosition]);
 	return (
 		<ThemeProvider theme={colors[theme]}>
 			<MainCont>
