@@ -54,9 +54,10 @@ const Portfolio = () => {
 						(project, i) =>
 							i < projectsToShow && (
 								<ContentRow
+                 
 									key={project.id}
 									onClick={() => window.open(project.url)}
-								>
+                >
 									<ContentMarginCont>
 										<ProjectPreview
 											src={project.ProjectImage.url}

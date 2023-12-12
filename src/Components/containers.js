@@ -56,15 +56,16 @@ export const FooterCont = styled(Row)`
 	gap: 25px;
 	align-items: flex-end;
 	justify-content: flex-start;
-`;
-
-export const HeaderCont = styled(Col)`
+	`;
+	
+	export const HeaderCont = styled(Col)`
 	padding: 25px;
 	align-items: flex-start;
-`;
-
-export const SkillsRow = styled(Row)`
+	`;
+	
+	export const SkillsRow = styled(Row)`
 	flex-wrap: wrap;
+	justify-content: flex-start;
 `;
 
 export const AboutCont = styled(Col)`
@@ -72,10 +73,10 @@ export const AboutCont = styled(Col)`
 `;
 
 export const SkillCont = styled.div`
-	background-color: ${(props) => props.theme.accent};
-	color: ${(props) => props.theme.text};
-	padding: 10px;
-	margin: 10px;
+	background-color: ${(props) => props.theme.secondary};
+	color: ${(props) => props.theme.primary};
+	padding: 5px;
+	margin: 5px;
 	border-radius: 5px;
 	cursor: pointer;
 
