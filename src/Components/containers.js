@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { Medium } from "./text";
+import { NavButton } from "./interactables";
 
 export const Col = styled.div`
 	display: flex;
@@ -26,7 +27,7 @@ export const MainCont = styled(Row)`
 
 export const AppCont = styled(Row)`
 	justify-content: space-around;
-	align-items:flex-start;
+	align-items: flex-start;
 	max-width: 70%;
 `;
 
@@ -48,6 +49,7 @@ export const NavBarCont = styled(Col)`
 		color: ${(props) => props.theme.accent};
 	}
 `;
+
 export const FooterCont = styled(Row)`
 	flex-grow: 2;
 	padding: 25px;
@@ -63,6 +65,10 @@ export const HeaderCont = styled(Col)`
 
 export const SkillsRow = styled(Row)`
 	flex-wrap: wrap;
+`;
+
+export const AboutCont = styled(Col)`
+	padding: 50px;
 `;
 
 export const SkillCont = styled.div`
@@ -99,7 +105,6 @@ export const ContentSectionCont = styled(Col)`
 	margin-left: 75px;
 `;
 
-
 export const ContentCont = styled(Col)`
 	gap: 25px;
 	align-items: flex-end;
@@ -115,8 +120,8 @@ export const ContentItemInfoCont = styled(Col)`
 
 export const ContentMarginCont = styled(Col)`
 	flex: 1;
+	min-width: 100px;
 	margin: 35px 10px;
-
 `;
 
 export const ContentRow = styled(Row)`

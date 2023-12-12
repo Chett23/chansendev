@@ -9,7 +9,7 @@ export const Selfie = styled.img`
 `;
 
 export const ProjectPreview = styled.img`
-	max-width: 200px;
+	max-width: 100%;
 	max-height: 200px;
 	border-radius: 15px;
 `;

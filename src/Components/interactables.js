@@ -26,6 +26,13 @@ export const NavBarButtonCont = styled(ButtonCont)`
 export const NavButton = styled.a`
 	color: ${(props) => props.theme.text};
 	text-decoration: none;
-	font-weight: bold;
-	font-size: 18pt;
+	font-size: "14pt";
+
+	${NavBarButtonCont}:hover & {
+		color: ${(props) => props.theme.accent};
+	}
+
+	${NavBarButtonCont}.active & {
+		color: ${(props) => props.theme.accent};
+	}
 `;
