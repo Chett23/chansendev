@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from "react";
 import { useEvent } from "./Hooks/useEvent";
 import { ThemeProvider } from "styled-components";
 
+import useDetectScroll from "@smakss/react-scroll-direction";
+
 import Header from "./Components/Header";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
@@ -17,7 +19,6 @@ import {
 	ThemeSelectorCont,
 	SideBarCont,
 	ContentSectionCont,
-	Row,
 } from "./Components/containers";
 import { colors } from "./Components/theme";
 
@@ -31,29 +32,51 @@ const App = () => {
 		"experience",
 		"portfolio",
 	]);
-	const [scrollPosition, setScrollPosition] = useState(0);
+	// const [scrollPosition, setScrollPosition] = useState(0);
 	// ref Management
 	const contentRefs = useRef([]);
+	const aboutRef = useRef(null);
+	const portfolioRef = useRef(null);
+	const experieceRef = useRef(null);
 	contentRefs.current = [];
 
 	// Global Vars
 	const construction = false;
 	const notFound = false;
 	// Event Management
+	const scrollDirection = useDetectScroll();
 	useEvent("scroll", () => {
-		contentRefs.current.forEach((ref) => checkActive(ref));
+		checkActive(aboutRef.current);
+		checkActive(portfolioRef.current);
+		checkActive(experieceRef.current);
 	});
 
 	const checkActive = (ref) => {
 		const navElement = document.getElementById(`${ref.id}-nav`);
-		if (scrollPosition >= ref.getBoundingClientRect().top) {
-			navElement.classList.add("active");
-		}
-		if (
-			scrollPosition >= ref.getBoundingClientRect().bottom ||
-			scrollPosition <= ref.getBoundingClientRect().top
-		) {
-			navElement.classList.remove("active");
+		const center = window.innerHeight / 2;
+		// console.log(
+		// 	ref.id,
+		// 	ref.getBoundingClientRect().top,
+		// 	center,
+		// 	ref.getBoundingClientRect().bottom,
+		// 	center
+		// );
+		if (scrollDirection == "down") {
+			if (ref.getBoundingClientRect().top <= center) {
+				navElement.classList.add("active");
+			}
+			if (ref.getBoundingClientRect().bottom <= center) {
+				navElement.classList.remove("active");
+			}
+		} else if (scrollDirection == "up") {
+			if (ref.getBoundingClientRect().bottom >= center) {
+				navElement.classList.add("active");
+			} else if (ref.id == "about" && ref.getBoundingClientRect().bottom >= window.innerHeight / 3) {
+				navElement.classList.add("active");
+			}
+			if (ref.getBoundingClientRect().top >= center) {
+				navElement.classList.remove("active");
+			}
 		}
 	};
 
@@ -73,18 +96,11 @@ const App = () => {
 		}
 	};
 
-	const addRef = (el) => {
-		if (el && !contentRefs.current.includes(el)) {
-			contentRefs.current.push(el);
-		}
-	};
-
 	useEffect(() => {
-		elementsTocheck.forEach((id) => {
-			const el = document.getElementById(id);
-			addRef(el);
-		});
-	}, [theme, scrollPosition]);
+		aboutRef.current = document.getElementById("about");
+		portfolioRef.current = document.getElementById("portfolio");
+		experieceRef.current = document.getElementById("experience");
+	}, [theme]);
 	return (
 		<ThemeProvider theme={colors[theme]}>
 			<MainCont>
