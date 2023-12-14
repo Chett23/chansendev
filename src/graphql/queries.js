@@ -9,6 +9,9 @@ export const getText = /* GraphQL */ `
       text
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -26,9 +29,43 @@ export const listTexts = /* GraphQL */ `
         text
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncTexts = /* GraphQL */ `
+  query SyncTexts(
+    $filter: ModelTextFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncTexts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        description
+        text
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
       __typename
     }
   }
@@ -42,9 +79,11 @@ export const getExperience = /* GraphQL */ `
       description
       tags
       subTitles
-      company
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -62,15 +101,49 @@ export const listExperiences = /* GraphQL */ `
         title
         description
         tags
-				url
-        priority
         subTitles
-        company
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncExperiences = /* GraphQL */ `
+  query SyncExperiences(
+    $filter: ModelExperienceFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncExperiences(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        timeFrame
+        title
+        description
+        tags
+        subTitles
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
       __typename
     }
   }
@@ -83,6 +156,9 @@ export const getProjectImage = /* GraphQL */ `
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -100,9 +176,43 @@ export const listProjectImages = /* GraphQL */ `
         name
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncProjectImages = /* GraphQL */ `
+  query SyncProjectImages(
+    $filter: ModelProjectImageFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncProjectImages(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        url
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
       __typename
     }
   }
@@ -122,10 +232,16 @@ export const getProject = /* GraphQL */ `
         name
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       projectProjectImageId
       __typename
     }
@@ -147,18 +263,48 @@ export const listProjects = /* GraphQL */ `
         url
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         projectProjectImageId
-        ProjectImage {
-          id
-          url
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
         __typename
       }
       nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncProjects = /* GraphQL */ `
+  query SyncProjects(
+    $filter: ModelProjectFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncProjects(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        description
+        stack
+        priority
+        url
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        projectProjectImageId
+        __typename
+      }
+      nextToken
+      startedAt
       __typename
     }
   }

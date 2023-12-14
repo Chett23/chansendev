@@ -9,6 +9,9 @@ export const onCreateText = /* GraphQL */ `
       text
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -21,6 +24,9 @@ export const onUpdateText = /* GraphQL */ `
       text
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -33,6 +39,9 @@ export const onDeleteText = /* GraphQL */ `
       text
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -48,9 +57,11 @@ export const onCreateExperience = /* GraphQL */ `
       description
       tags
       subTitles
-      company
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -66,9 +77,11 @@ export const onUpdateExperience = /* GraphQL */ `
       description
       tags
       subTitles
-      company
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -84,9 +97,11 @@ export const onDeleteExperience = /* GraphQL */ `
       description
       tags
       subTitles
-      company
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -101,6 +116,9 @@ export const onCreateProjectImage = /* GraphQL */ `
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -115,6 +133,9 @@ export const onUpdateProjectImage = /* GraphQL */ `
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -129,6 +150,9 @@ export const onDeleteProjectImage = /* GraphQL */ `
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -148,10 +172,16 @@ export const onCreateProject = /* GraphQL */ `
         name
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       projectProjectImageId
       __typename
     }
@@ -172,10 +202,16 @@ export const onUpdateProject = /* GraphQL */ `
         name
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       projectProjectImageId
       __typename
     }
@@ -196,10 +232,16 @@ export const onDeleteProject = /* GraphQL */ `
         name
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       projectProjectImageId
       __typename
     }
