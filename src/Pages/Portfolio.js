@@ -1,6 +1,10 @@
 import React from "react";
 import { API } from "aws-amplify";
-import { listProjects } from "../graphql/queries";
+import {
+	getProjectImage,
+	listProjectImages,
+	listProjects,
+} from "../graphql/queries";
 import { useState, useEffect } from "react";
 import {
 	Col,
@@ -35,10 +39,27 @@ const Portfolio = () => {
 	};
 
 	const getProjects = async () => {
-		const response = await API.graphql({
+		await API.graphql({
 			query: listProjects,
+		}).then((response) => {
+			let projects = [];
+			response.data.listProjects.items.forEach((project) => {
+				API.graphql({
+					query: getProjectImage,
+					variables: { id: project.projectProjectImageId },
+				}).then((response) => {
+					const ProjectImage = response.data.getProjectImage;
+					const newProject = { ...project, ProjectImage };
+					if (
+						!projects.includes(project) &&
+						!projects.includes(newProject)
+					) {
+						projects.push(newProject);
+					}
+				});
+			});
+			setProjects(projects);
 		});
-		setProjects(response.data.listProjects.items);
 	};
 
 	useEffect(() => {
@@ -54,10 +75,9 @@ const Portfolio = () => {
 						(project, i) =>
 							i < projectsToShow && (
 								<ContentRow
-                 
 									key={project.id}
 									onClick={() => window.open(project.url)}
-                >
+								>
 									<ContentMarginCont>
 										<ProjectPreview
 											src={project.ProjectImage.url}

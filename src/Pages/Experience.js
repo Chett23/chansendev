@@ -16,15 +16,17 @@ import { AccentText, Text, Medium } from "../Components/text";
 const Experience = () => {
 	const [experiences, setExperiences] = useState([]);
 
-	const getProjects = async () => {
-		const response = await API.graphql({
+	const GetExperiences = async () => {
+		await API.graphql({
 			query: listExperiences,
+		}).then((response) => {
+			console.log(response.data.listExperiences.items);
+			setExperiences(response.data.listExperiences.items);
 		});
-		setExperiences(response.data.listExperiences.items);
 	};
 
 	useEffect(() => {
-		getProjects();
+		GetExperiences();
 	}, []);
 
 	return (
