@@ -2,37 +2,46 @@ import React from "react";
 import { API } from "aws-amplify";
 import { listProjects } from "../graphql/queries";
 import { useState, useEffect } from "react";
-import {
-	Col,
-	ContentCont,
-	ContentRow,
-	ContentItemInfoCont,
-	ContentMarginCont,
-} from "../Components/containers";
-import { Title, Text, Medium } from "../Components/text";
+import { Col, Row } from "../Components/containers";
+import { Title, Text } from "../Components/text";
 import { ProjectPreview } from "../Components/images";
+
+const LeftSidedProject = ({ project }) => {
+	return (
+		<Row width="85%" key={project.id}>
+			<Col width="50%" margin="25px">
+				<ProjectPreview
+					src={project.ProjectImage.url}
+					title={project.stack}
+				/>
+			</Col>
+			<Col width="50%" margin="25px">
+				<Title>{project.name}</Title>
+				<Text>{project.description}</Text>
+			</Col>
+		</Row>
+	);
+};
+
+const RightSidedProject = ({ project }) => {
+	return (
+		<Row width="85%" key={project.id}>
+			<Col width="50%" margin="25px">
+				<Title>{project.name}</Title>
+				<Text>{project.description}</Text>
+			</Col>
+			<Col width="50%" margin="25px">
+				<ProjectPreview
+					src={project.ProjectImage.url}
+					title={project.stack}
+				/>
+			</Col>
+		</Row>
+	);
+};
 
 const Portfolio = () => {
 	const [projects, setProjects] = useState([]);
-	const [projectsToShow, setProjectsToShow] = useState(3);
-
-	const showMore = () => {
-		return projectsToShow < projects.length ? (
-			<Text
-				onClick={() => setProjectsToShow(projects.length)}
-				style={{ cursor: "pointer" }}
-			>
-				Show More
-			</Text>
-		) : (
-			<Text
-				onClick={() => setProjectsToShow(4)}
-				style={{ cursor: "pointer" }}
-			>
-				Show Less
-			</Text>
-		);
-	};
 
 	const getProjects = async () => {
 		const response = await API.graphql({
@@ -43,39 +52,27 @@ const Portfolio = () => {
 
 	useEffect(() => {
 		getProjects();
-	}, [projectsToShow]);
+	}, []);
 
 	return (
-		<ContentCont id="portfolio" name="portfolio">
-			{projects ? (
+		<Col id="portfolio" name="portfolio" margin="50px 0">
+			{projects &&
 				projects
 					.sort((a, b) => a.priority - b.priority)
-					.map(
-						(project, i) =>
-							i < projectsToShow && (
-								<ContentRow
-                 
-									key={project.id}
-									onClick={() => window.open(project.url)}
-                >
-									<ContentMarginCont>
-										<ProjectPreview
-											src={project.ProjectImage.url}
-											title={project.stack}
-										/>
-									</ContentMarginCont>
-									<ContentItemInfoCont>
-										<Medium>{project.name}</Medium>
-										<Text>{project.description}</Text>
-									</ContentItemInfoCont>
-								</ContentRow>
-							)
-					)
-			) : (
-				<Text>Loading . . .</Text>
-			)}
-			{showMore()}
-		</ContentCont>
+					.map((project, i) =>
+						i % 2 == 0 ? (
+							<LeftSidedProject
+								project={project}
+								key={project.id}
+							/>
+						) : (
+							<RightSidedProject
+								project={project}
+								key={project.id}
+							/>
+						)
+					)}
+		</Col>
 	);
 };
 
