@@ -6,6 +6,7 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { Project } from "../models";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -48,7 +49,7 @@ export declare type ProjectUpdateFormProps = React.PropsWithChildren<{
     overrides?: ProjectUpdateFormOverridesProps | undefined | null;
 } & {
     id?: string;
-    project?: any;
+    project?: Project;
     onSubmit?: (fields: ProjectUpdateFormInputValues) => ProjectUpdateFormInputValues;
     onSuccess?: (fields: ProjectUpdateFormInputValues) => void;
     onError?: (fields: ProjectUpdateFormInputValues, errorMessage: string) => void;

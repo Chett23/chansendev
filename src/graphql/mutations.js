@@ -67,6 +67,8 @@ export const createExperience = /* GraphQL */ `
       description
       tags
       subTitles
+      url
+      company
       createdAt
       updatedAt
       _version
@@ -88,6 +90,8 @@ export const updateExperience = /* GraphQL */ `
       description
       tags
       subTitles
+      url
+      company
       createdAt
       updatedAt
       _version
@@ -109,6 +113,8 @@ export const deleteExperience = /* GraphQL */ `
       description
       tags
       subTitles
+      url
+      company
       createdAt
       updatedAt
       _version

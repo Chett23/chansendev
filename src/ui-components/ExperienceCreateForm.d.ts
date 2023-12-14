@@ -27,6 +27,8 @@ export declare type ExperienceCreateFormInputValues = {
     description?: string;
     tags?: string[];
     subTitles?: string[];
+    url?: string;
+    company?: string;
 };
 export declare type ExperienceCreateFormValidationValues = {
     timeFrame?: ValidationFunction<string>;
@@ -34,6 +36,8 @@ export declare type ExperienceCreateFormValidationValues = {
     description?: ValidationFunction<string>;
     tags?: ValidationFunction<string>;
     subTitles?: ValidationFunction<string>;
+    url?: ValidationFunction<string>;
+    company?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ExperienceCreateFormOverridesProps = {
@@ -43,6 +47,8 @@ export declare type ExperienceCreateFormOverridesProps = {
     description?: PrimitiveOverrideProps<TextFieldProps>;
     tags?: PrimitiveOverrideProps<TextFieldProps>;
     subTitles?: PrimitiveOverrideProps<TextFieldProps>;
+    url?: PrimitiveOverrideProps<TextFieldProps>;
+    company?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ExperienceCreateFormProps = React.PropsWithChildren<{
     overrides?: ExperienceCreateFormOverridesProps | undefined | null;
