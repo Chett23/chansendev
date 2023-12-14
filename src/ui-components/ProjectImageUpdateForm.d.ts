@@ -6,6 +6,7 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { ProjectImage } from "../models";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -39,7 +40,7 @@ export declare type ProjectImageUpdateFormProps = React.PropsWithChildren<{
     overrides?: ProjectImageUpdateFormOverridesProps | undefined | null;
 } & {
     id?: string;
-    projectImage?: any;
+    projectImage?: ProjectImage;
     onSubmit?: (fields: ProjectImageUpdateFormInputValues) => ProjectImageUpdateFormInputValues;
     onSuccess?: (fields: ProjectImageUpdateFormInputValues) => void;
     onError?: (fields: ProjectImageUpdateFormInputValues, errorMessage: string) => void;

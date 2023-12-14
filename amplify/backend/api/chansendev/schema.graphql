@@ -11,6 +11,8 @@ type Experience @model @auth(rules: [{allow: public}]) {
   description: String
   tags: [String]
   subTitles: [String]
+  url: String
+  company: String
 }
 
 type ProjectImage @model @auth(rules: [{allow: public}]) {

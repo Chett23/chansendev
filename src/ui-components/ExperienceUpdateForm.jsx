@@ -18,10 +18,9 @@ import {
   TextField,
   useTheme,
 } from "@aws-amplify/ui-react";
+import { Experience } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
-import { API } from "aws-amplify";
-import { getExperience } from "../graphql/queries";
-import { updateExperience } from "../graphql/mutations";
+import { DataStore } from "aws-amplify";
 function ArrayField({
   items = [],
   onChange,
@@ -195,6 +194,8 @@ export default function ExperienceUpdateForm(props) {
     description: "",
     tags: [],
     subTitles: [],
+    url: "",
+    company: "",
   };
   const [timeFrame, setTimeFrame] = React.useState(initialValues.timeFrame);
   const [title, setTitle] = React.useState(initialValues.title);
@@ -203,6 +204,8 @@ export default function ExperienceUpdateForm(props) {
   );
   const [tags, setTags] = React.useState(initialValues.tags);
   const [subTitles, setSubTitles] = React.useState(initialValues.subTitles);
+  const [url, setUrl] = React.useState(initialValues.url);
+  const [company, setCompany] = React.useState(initialValues.company);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = experienceRecord
@@ -215,6 +218,8 @@ export default function ExperienceUpdateForm(props) {
     setCurrentTagsValue("");
     setSubTitles(cleanValues.subTitles ?? []);
     setCurrentSubTitlesValue("");
+    setUrl(cleanValues.url);
+    setCompany(cleanValues.company);
     setErrors({});
   };
   const [experienceRecord, setExperienceRecord] =
@@ -222,12 +227,7 @@ export default function ExperienceUpdateForm(props) {
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
-        ? (
-            await API.graphql({
-              query: getExperience.replaceAll("__typename", ""),
-              variables: { id: idProp },
-            })
-          )?.data?.getExperience
+        ? await DataStore.query(Experience, idProp)
         : experienceModelProp;
       setExperienceRecord(record);
     };
@@ -244,6 +244,8 @@ export default function ExperienceUpdateForm(props) {
     description: [],
     tags: [],
     subTitles: [],
+    url: [],
+    company: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -271,11 +273,13 @@ export default function ExperienceUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          timeFrame: timeFrame ?? null,
-          title: title ?? null,
-          description: description ?? null,
-          tags: tags ?? null,
-          subTitles: subTitles ?? null,
+          timeFrame,
+          title,
+          description,
+          tags,
+          subTitles,
+          url,
+          company,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -305,22 +309,17 @@ export default function ExperienceUpdateForm(props) {
               modelFields[key] = null;
             }
           });
-          await API.graphql({
-            query: updateExperience.replaceAll("__typename", ""),
-            variables: {
-              input: {
-                id: experienceRecord.id,
-                ...modelFields,
-              },
-            },
-          });
+          await DataStore.save(
+            Experience.copyOf(experienceRecord, (updated) => {
+              Object.assign(updated, modelFields);
+            })
+          );
           if (onSuccess) {
             onSuccess(modelFields);
           }
         } catch (err) {
           if (onError) {
-            const messages = err.errors.map((e) => e.message).join("\n");
-            onError(modelFields, messages);
+            onError(modelFields, err.message);
           }
         }
       }}
@@ -341,6 +340,8 @@ export default function ExperienceUpdateForm(props) {
               description,
               tags,
               subTitles,
+              url,
+              company,
             };
             const result = onChange(modelFields);
             value = result?.timeFrame ?? value;
@@ -369,6 +370,8 @@ export default function ExperienceUpdateForm(props) {
               description,
               tags,
               subTitles,
+              url,
+              company,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -397,6 +400,8 @@ export default function ExperienceUpdateForm(props) {
               description: value,
               tags,
               subTitles,
+              url,
+              company,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -421,6 +426,8 @@ export default function ExperienceUpdateForm(props) {
               description,
               tags: values,
               subTitles,
+              url,
+              company,
             };
             const result = onChange(modelFields);
             values = result?.tags ?? values;
@@ -470,6 +477,8 @@ export default function ExperienceUpdateForm(props) {
               description,
               tags,
               subTitles: values,
+              url,
+              company,
             };
             const result = onChange(modelFields);
             values = result?.subTitles ?? values;
@@ -509,6 +518,66 @@ export default function ExperienceUpdateForm(props) {
           {...getOverrideProps(overrides, "subTitles")}
         ></TextField>
       </ArrayField>
+      <TextField
+        label="Url"
+        isRequired={false}
+        isReadOnly={false}
+        value={url}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              timeFrame,
+              title,
+              description,
+              tags,
+              subTitles,
+              url: value,
+              company,
+            };
+            const result = onChange(modelFields);
+            value = result?.url ?? value;
+          }
+          if (errors.url?.hasError) {
+            runValidationTasks("url", value);
+          }
+          setUrl(value);
+        }}
+        onBlur={() => runValidationTasks("url", url)}
+        errorMessage={errors.url?.errorMessage}
+        hasError={errors.url?.hasError}
+        {...getOverrideProps(overrides, "url")}
+      ></TextField>
+      <TextField
+        label="Company"
+        isRequired={false}
+        isReadOnly={false}
+        value={company}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              timeFrame,
+              title,
+              description,
+              tags,
+              subTitles,
+              url,
+              company: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.company ?? value;
+          }
+          if (errors.company?.hasError) {
+            runValidationTasks("company", value);
+          }
+          setCompany(value);
+        }}
+        onBlur={() => runValidationTasks("company", company)}
+        errorMessage={errors.company?.errorMessage}
+        hasError={errors.company?.hasError}
+        {...getOverrideProps(overrides, "company")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

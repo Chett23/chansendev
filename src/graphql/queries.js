@@ -79,6 +79,8 @@ export const getExperience = /* GraphQL */ `
       description
       tags
       subTitles
+      url
+      company
       createdAt
       updatedAt
       _version
@@ -102,6 +104,8 @@ export const listExperiences = /* GraphQL */ `
         description
         tags
         subTitles
+        url
+        company
         createdAt
         updatedAt
         _version
@@ -135,6 +139,8 @@ export const syncExperiences = /* GraphQL */ `
         description
         tags
         subTitles
+        url
+        company
         createdAt
         updatedAt
         _version

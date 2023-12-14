@@ -6,6 +6,7 @@
 
 import * as React from "react";
 import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { Experience } from "../models";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -27,6 +28,8 @@ export declare type ExperienceUpdateFormInputValues = {
     description?: string;
     tags?: string[];
     subTitles?: string[];
+    url?: string;
+    company?: string;
 };
 export declare type ExperienceUpdateFormValidationValues = {
     timeFrame?: ValidationFunction<string>;
@@ -34,6 +37,8 @@ export declare type ExperienceUpdateFormValidationValues = {
     description?: ValidationFunction<string>;
     tags?: ValidationFunction<string>;
     subTitles?: ValidationFunction<string>;
+    url?: ValidationFunction<string>;
+    company?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ExperienceUpdateFormOverridesProps = {
@@ -43,12 +48,14 @@ export declare type ExperienceUpdateFormOverridesProps = {
     description?: PrimitiveOverrideProps<TextFieldProps>;
     tags?: PrimitiveOverrideProps<TextFieldProps>;
     subTitles?: PrimitiveOverrideProps<TextFieldProps>;
+    url?: PrimitiveOverrideProps<TextFieldProps>;
+    company?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ExperienceUpdateFormProps = React.PropsWithChildren<{
     overrides?: ExperienceUpdateFormOverridesProps | undefined | null;
 } & {
     id?: string;
-    experience?: any;
+    experience?: Experience;
     onSubmit?: (fields: ExperienceUpdateFormInputValues) => ExperienceUpdateFormInputValues;
     onSuccess?: (fields: ExperienceUpdateFormInputValues) => void;
     onError?: (fields: ExperienceUpdateFormInputValues, errorMessage: string) => void;
