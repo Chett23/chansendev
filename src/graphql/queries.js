@@ -108,9 +108,7 @@ export const listExperiences = /* GraphQL */ `
         company
         createdAt
         updatedAt
-        _version
         _deleted
-        _lastChangedAt
         __typename
       }
       nextToken
