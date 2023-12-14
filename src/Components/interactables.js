@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { main } from "./theme";
 
 export const ButtonCont = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: ${main};
-	margin: auto;
+	color: ${(props) => props.theme.text};
 	cursor: pointer;
 `;
 export const SideBarButtonCont = styled(ButtonCont)`
@@ -14,6 +12,7 @@ export const SideBarButtonCont = styled(ButtonCont)`
 	max-width: 45px;
 	height: 45px;
 	max-height: 45px;
+	justify-content: center;
 `;
 
 export const NavBarButtonCont = styled(ButtonCont)`
@@ -21,10 +20,19 @@ export const NavBarButtonCont = styled(ButtonCont)`
 	max-width: 65px;
 	height: 45px;
 	max-height: 45px;
+	justify-content: flex-start;
 `;
 
 export const NavButton = styled.a`
-	color: ${main};
+	color: ${(props) => props.theme.text};
 	text-decoration: none;
-	font-weight: bold;
-`
+	font-size: "14pt";
+
+	${NavBarButtonCont}:hover & {
+		color: ${(props) => props.theme.accent};
+	}
+
+	${NavBarButtonCont}.active & {
+		color: ${(props) => props.theme.accent};
+	}
+`;

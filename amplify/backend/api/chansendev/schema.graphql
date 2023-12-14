@@ -1,3 +1,18 @@
+type Text @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  description: String
+  text: String
+}
+
+type Experience @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  timeFrame: String
+  title: String
+  description: String
+  tags: [String]
+  subTitles: [String]
+}
+
 type ProjectImage @model @auth(rules: [{allow: public}]) {
   id: ID!
   url: String
@@ -13,3 +28,4 @@ type Project @model @auth(rules: [{allow: public}]) {
   url: String
   ProjectImage: ProjectImage @hasOne
 }
+ 

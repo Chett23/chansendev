@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Selfie = styled.img`
 	align-self: center;
 	width: 175px;
@@ -10,6 +9,7 @@ export const Selfie = styled.img`
 `;
 
 export const ProjectPreview = styled.img`
-	width: 100%;
+	max-width: 100%;
+	max-height: 200px;
 	border-radius: 15px;
-`
+`;
