@@ -20,8 +20,13 @@ const Experience = () => {
 		await API.graphql({
 			query: listExperiences,
 		}).then((response) => {
-			console.log(response.data.listExperiences.items);
-			setExperiences(response.data.listExperiences.items);
+			setExperiences(
+				response.data.listExperiences.items.filter(
+					(item) =>
+						item.id != "1c1e49c2-2861-4013-8b2e-30d337000e2c" &&
+						item.id != "39ef87f7-8e40-48a3-9229-0c7d179a453b"
+				)
+			);
 		});
 	};
 
