@@ -54,13 +54,6 @@ const App = () => {
 	const checkActive = (ref) => {
 		const navElement = document.getElementById(`${ref.id}-nav`);
 		const center = window.innerHeight / 2;
-		// console.log(
-		// 	ref.id,
-		// 	ref.getBoundingClientRect().top,
-		// 	center,
-		// 	ref.getBoundingClientRect().bottom,
-		// 	center
-		// );
 		if (scrollDirection == "down") {
 			if (ref.getBoundingClientRect().top <= center) {
 				navElement.classList.add("active");
@@ -71,7 +64,10 @@ const App = () => {
 		} else if (scrollDirection == "up") {
 			if (ref.getBoundingClientRect().bottom >= center) {
 				navElement.classList.add("active");
-			} else if (ref.id == "about" && ref.getBoundingClientRect().bottom >= window.innerHeight / 2) {
+			} else if (
+				ref.id == "about" &&
+				ref.getBoundingClientRect().bottom >= window.innerHeight / 2
+			) {
 				navElement.classList.add("active");
 			}
 			if (ref.getBoundingClientRect().top >= center) {
@@ -81,9 +77,12 @@ const App = () => {
 	};
 
 	const handleNavClick = (section) => {
-		contentRefs.current
-			.find((el) => el.id == section)
-			.scrollIntoView({ behavior: "smooth" });
+		section == "about" &&
+			aboutRef.current.scrollIntoView({ behavior: "smooth" });
+		section == "experience" &&
+			experieceRef.current.scrollIntoView({ behavior: "smooth" });
+		section == "portfolio" &&
+			portfolioRef.current.scrollIntoView({ behavior: "smooth" });
 		const navElement = document.getElementById(`${section}-nav`);
 		navElement.classList.add("active");
 	};
