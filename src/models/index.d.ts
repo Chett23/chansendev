@@ -49,6 +49,7 @@ type EagerExperience = {
   readonly subTitles?: (string | null)[] | null;
   readonly url?: string | null;
   readonly company?: string | null;
+  readonly priority?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -62,6 +63,7 @@ type LazyExperience = {
   readonly subTitles?: (string | null)[] | null;
   readonly url?: string | null;
   readonly company?: string | null;
+  readonly priority?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

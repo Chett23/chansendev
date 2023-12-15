@@ -71,7 +71,7 @@ const App = () => {
 		} else if (scrollDirection == "up") {
 			if (ref.getBoundingClientRect().bottom >= center) {
 				navElement.classList.add("active");
-			} else if (ref.id == "about" && ref.getBoundingClientRect().bottom >= window.innerHeight / 3) {
+			} else if (ref.id == "about" && ref.getBoundingClientRect().bottom >= window.innerHeight / 2) {
 				navElement.classList.add("active");
 			}
 			if (ref.getBoundingClientRect().top >= center) {

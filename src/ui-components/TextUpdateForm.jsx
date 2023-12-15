@@ -7,7 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { Text } from "../models";
+import { Text as Text0 } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 export default function TextUpdateForm(props) {
@@ -43,7 +43,7 @@ export default function TextUpdateForm(props) {
   React.useEffect(() => {
     const queryData = async () => {
       const record = idProp
-        ? await DataStore.query(Text, idProp)
+        ? await DataStore.query(Text0, idProp)
         : textModelProp;
       setTextRecord(record);
     };
@@ -112,7 +112,7 @@ export default function TextUpdateForm(props) {
             }
           });
           await DataStore.save(
-            Text.copyOf(textRecord, (updated) => {
+            Text0.copyOf(textRecord, (updated) => {
               Object.assign(updated, modelFields);
             })
           );
