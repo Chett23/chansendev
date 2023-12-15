@@ -69,6 +69,7 @@ export const createExperience = /* GraphQL */ `
       subTitles
       url
       company
+      priority
       createdAt
       updatedAt
       _version
@@ -92,6 +93,7 @@ export const updateExperience = /* GraphQL */ `
       subTitles
       url
       company
+      priority
       createdAt
       updatedAt
       _version
@@ -115,6 +117,7 @@ export const deleteExperience = /* GraphQL */ `
       subTitles
       url
       company
+      priority
       createdAt
       updatedAt
       _version

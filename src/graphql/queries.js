@@ -81,6 +81,7 @@ export const getExperience = /* GraphQL */ `
       subTitles
       url
       company
+      priority
       createdAt
       updatedAt
       _version
@@ -106,9 +107,12 @@ export const listExperiences = /* GraphQL */ `
         subTitles
         url
         company
+        priority
         createdAt
         updatedAt
+        _version
         _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
@@ -139,6 +143,7 @@ export const syncExperiences = /* GraphQL */ `
         subTitles
         url
         company
+        priority
         createdAt
         updatedAt
         _version

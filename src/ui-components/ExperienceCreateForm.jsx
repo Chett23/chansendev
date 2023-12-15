@@ -195,6 +195,7 @@ export default function ExperienceCreateForm(props) {
     subTitles: [],
     url: "",
     company: "",
+    priority: "",
   };
   const [timeFrame, setTimeFrame] = React.useState(initialValues.timeFrame);
   const [title, setTitle] = React.useState(initialValues.title);
@@ -205,6 +206,7 @@ export default function ExperienceCreateForm(props) {
   const [subTitles, setSubTitles] = React.useState(initialValues.subTitles);
   const [url, setUrl] = React.useState(initialValues.url);
   const [company, setCompany] = React.useState(initialValues.company);
+  const [priority, setPriority] = React.useState(initialValues.priority);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setTimeFrame(initialValues.timeFrame);
@@ -216,6 +218,7 @@ export default function ExperienceCreateForm(props) {
     setCurrentSubTitlesValue("");
     setUrl(initialValues.url);
     setCompany(initialValues.company);
+    setPriority(initialValues.priority);
     setErrors({});
   };
   const [currentTagsValue, setCurrentTagsValue] = React.useState("");
@@ -230,6 +233,7 @@ export default function ExperienceCreateForm(props) {
     subTitles: [],
     url: [],
     company: [],
+    priority: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -264,6 +268,7 @@ export default function ExperienceCreateForm(props) {
           subTitles,
           url,
           company,
+          priority,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -325,6 +330,7 @@ export default function ExperienceCreateForm(props) {
               subTitles,
               url,
               company,
+              priority,
             };
             const result = onChange(modelFields);
             value = result?.timeFrame ?? value;
@@ -355,6 +361,7 @@ export default function ExperienceCreateForm(props) {
               subTitles,
               url,
               company,
+              priority,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -385,6 +392,7 @@ export default function ExperienceCreateForm(props) {
               subTitles,
               url,
               company,
+              priority,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -411,6 +419,7 @@ export default function ExperienceCreateForm(props) {
               subTitles,
               url,
               company,
+              priority,
             };
             const result = onChange(modelFields);
             values = result?.tags ?? values;
@@ -462,6 +471,7 @@ export default function ExperienceCreateForm(props) {
               subTitles: values,
               url,
               company,
+              priority,
             };
             const result = onChange(modelFields);
             values = result?.subTitles ?? values;
@@ -517,6 +527,7 @@ export default function ExperienceCreateForm(props) {
               subTitles,
               url: value,
               company,
+              priority,
             };
             const result = onChange(modelFields);
             value = result?.url ?? value;
@@ -547,6 +558,7 @@ export default function ExperienceCreateForm(props) {
               subTitles,
               url,
               company: value,
+              priority,
             };
             const result = onChange(modelFields);
             value = result?.company ?? value;
@@ -560,6 +572,37 @@ export default function ExperienceCreateForm(props) {
         errorMessage={errors.company?.errorMessage}
         hasError={errors.company?.hasError}
         {...getOverrideProps(overrides, "company")}
+      ></TextField>
+      <TextField
+        label="Priority"
+        isRequired={false}
+        isReadOnly={false}
+        value={priority}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              timeFrame,
+              title,
+              description,
+              tags,
+              subTitles,
+              url,
+              company,
+              priority: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.priority ?? value;
+          }
+          if (errors.priority?.hasError) {
+            runValidationTasks("priority", value);
+          }
+          setPriority(value);
+        }}
+        onBlur={() => runValidationTasks("priority", priority)}
+        errorMessage={errors.priority?.errorMessage}
+        hasError={errors.priority?.hasError}
+        {...getOverrideProps(overrides, "priority")}
       ></TextField>
       <Flex
         justifyContent="space-between"

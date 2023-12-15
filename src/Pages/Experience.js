@@ -44,6 +44,7 @@ const Experience = () => {
 							key={experience.id}
 							onClick={() => window.open(experience.url)}
 						>
+							{console.log(experience)}
 							<ContentMarginCont>
 								<AccentText>{experience.timeFrame}</AccentText>
 							</ContentMarginCont>

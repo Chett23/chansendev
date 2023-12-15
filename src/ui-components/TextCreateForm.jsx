@@ -7,7 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
-import { Text } from "../models";
+import { Text as Text0 } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 export default function TextCreateForm(props) {
@@ -96,7 +96,7 @@ export default function TextCreateForm(props) {
               modelFields[key] = null;
             }
           });
-          await DataStore.save(new Text(modelFields));
+          await DataStore.save(new Text0(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
           }

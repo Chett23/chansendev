@@ -127,6 +127,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "priority": {
+                    "name": "priority",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -347,5 +354,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "a9c15e23bfb876dd6863669960629c36"
+    "version": "1eff15c82ca8fd1173cf9e3bf097bebd"
 };
