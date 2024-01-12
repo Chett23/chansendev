@@ -3,7 +3,6 @@ import { API } from "aws-amplify";
 import { listExperiences } from "../graphql/queries";
 import { useState, useEffect } from "react";
 import {
-	Col,
 	ContentCont,
 	ContentRow,
 	ContentItemInfoCont,

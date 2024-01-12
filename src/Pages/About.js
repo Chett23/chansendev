@@ -1,13 +1,13 @@
 import React from "react";
 
-import { AboutCont, SkillCont, SkillsRow } from "../Components/containers";
+import { AboutCont } from "../Components/containers";
 import { Title, Text } from "../Components/text";
 
 const About = () => {
 	return (
 		<AboutCont id="about" name="about">
 			<Title>Hello there!</Title>
-			<Text>
+			<Text className={'text-red-500'}>
 				As a Web Developer I have put my determination and quick
 				learning to the test as I have learned new ways to problem
 				solve. Paired with a keen attention to detail and quality I am
