@@ -7,7 +7,7 @@ const About = () => {
 	return (
 		<AboutCont id="about" name="about">
 			<Title>Hello there!</Title>
-			<Text className={'text-red-500'}>
+			<p className={'text-font-800 font-sans text-md'}>
 				As a Web Developer I have put my determination and quick
 				learning to the test as I have learned new ways to problem
 				solve. Paired with a keen attention to detail and quality I am
@@ -17,7 +17,7 @@ const About = () => {
 				and apply them to solve complex security challenges. Ambitious
 				and innovative thinker, always seeking out new ways to improve
 				security posture.
-			</Text>
+			</p>
 		</AboutCont>
 	);
 };
