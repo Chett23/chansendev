@@ -108,7 +108,7 @@ const App = () => {
             {/* grid for left col and its children */}
             <div className="flex flex-col sticky top-12 justify-around items-start h-[calc(90vh-48px)]">
               <div className="p-8 items-start flex flex-col min-w-content justify-center">
-                <p className="text-primary-500 text-4xl font-bold my-3">
+                <p className="text-primary-500 text-4xl w-[22rem] font-bold my-3">
                   Chester Hansen
                 </p>
                 <p>
