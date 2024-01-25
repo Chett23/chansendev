@@ -34,43 +34,43 @@ const Experience = () => {
 	}, []);
 
 	return (
-		<ContentCont id="experience" name="experience">
+		<div className="flex flex-col justify-start items-end gap-6" id="experience" name="experience">
 			{experiences ? (
 				experiences
 					.sort((a, b) => a.priority - b.priority)
 					.map((experience) => (
-						<ContentRow
+						<div className="flex justify-around items-start cursor-pointer hover:bg-accent-200 hover:rounded-3xl hover:text-primary-800"
 							key={experience.id}
 							onClick={() => window.open(experience.url)}
 						>
-							<ContentMarginCont>
-								<AccentText>{experience.timeFrame}</AccentText>
-							</ContentMarginCont>
-							<ContentItemInfoCont>
-								<Medium>{experience.title}</Medium>
-								<AccentText>{experience.company}</AccentText>
+							<div className="flex flex-col flex-1 min-w-24 my-9 mx-3">
+								<span className="text-xs font-bold text-secondary-600">{experience.timeFrame}</span>
+							</div>
+							<div className="flex flex-col justify-center items-start m-6">
+								<span className="text-accent-800 text-xl">{experience.title}</span>
+								<span className="text-xs font-bold text-secondary-600">{experience.company}</span>
 								{experience.description
 									.split("•")
 									.map(
 										(bullet, i) =>
 											bullet.length > 5 && (
-												<Text key={`bullet-${i}`}>
+												<span className="text-base" key={`bullet-${i}`}>
 													• {bullet}
-												</Text>
+												</span>
 											)
 									)}
-								<SkillsRow>
+								<div className="flex justify-start w-full items-center flex-wrap">
 									{experience.tags.map((tag) => (
-										<SkillCont key={tag}>{tag}</SkillCont>
+										<div className="bg-secondary-300 text-primary-700 p-1.5 m-1.5 rounded-md cursor-pointer hover:text-accent-800" key={tag}>{tag}</div>
 									))}
-								</SkillsRow>
-							</ContentItemInfoCont>
-						</ContentRow>
+								</div>
+							</div>
+						</div>
 					))
 			) : (
-				<Text>Loading . . .</Text>
+				<span className="text-base font-bold">Loading . . .</span>
 			)}
-		</ContentCont>
+		</div>
 	);
 };
 

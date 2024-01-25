@@ -97,7 +97,7 @@ const App = () => {
   return (
     <div className={theme}>
       <div
-        className={`bg-background-200 text-font-700 min-h-full flex flex-row justify-center items-center w-full`}
+        className={`bg-background-200 font-sans text-font-800 min-h-full flex flex-row justify-center items-center w-full dark:bg-background-100`}
       >
         {construction ? (
           <UnderConstruction />
@@ -107,14 +107,7 @@ const App = () => {
           <div className="flex flex-row items-start justify-around max-w-7xl">
             {/* grid for left col and its children */}
             <div className="flex flex-col sticky top-12 justify-around items-start h-[calc(90vh-48px)]">
-              <div className="p-8 items-start flex flex-col min-w-content justify-center">
-                <p className="text-primary-500 text-4xl w-[22rem] font-bold my-3">
-                  Chester Hansen
-                </p>
-                <p>
-                  A Skilled Fullstack Developer building fluid Web Applications.
-                </p>
-              </div>
+              <Header />
               <NavBar handleNavClick={handleNavClick} />
               <Footer />
             </div>
