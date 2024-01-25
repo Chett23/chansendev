@@ -58,40 +58,53 @@ const Portfolio = () => {
   }, [projectsToShow]);
 
   return (
-    <ContentCont id="portfolio" name="portfolio">
+    <div
+      className="flex flex-col justify-start items-end gap-6"
+      id="portfolio"
+      name="portfolio"
+    >
       {projects ? (
         projects
           .sort((a, b) => a.priority - b.priority)
           .map(
             (project, i) =>
               i < projectsToShow && (
-                <ContentRow
+                <div
+                  className="flex justify-around items-start cursor-pointer hover:bg-accent-200 hover:rounded-3xl hover:text-primary-800"
                   key={project.id}
                   onClick={() => window.open(project.url)}
                 >
-                  <ContentMarginCont>
-                    <ProjectPreview
+                  <div className="flex flex-col flex-1 min-w-24 my-9 mx-3">
+                    <img
+                      className="max-w-full max-h-52 rounded-2xl"
                       src={project.ProjectImage.url}
                       title={project.stack}
                     />
-                  </ContentMarginCont>
-                  <ContentItemInfoCont>
-                    <Medium>{project.name}</Medium>
-                    <Text>{project.description}</Text>
-                    <SkillsRow>
-                      {project.stack.split(',').map((tag) => (
-                        <SkillCont key={tag}>{tag}</SkillCont>
+                  </div>
+                  <div className="flex flex-col justify-center items-start m-6">
+                    <span className="text-accent-800 text-xl">
+                      {project.name}
+                    </span>
+                    <span className="text-base">{project.description}</span>
+                    <div className="flex justify-start w-full items-center flex-wrap">
+                      {project.stack.split(",").map((tag) => (
+                        <div
+                          className="bg-secondary-300 text-primary-700 p-1.5 m-1.5 rounded-md cursor-pointer hover:text-accent-800"
+                          key={tag}
+                        >
+                          {tag}
+                        </div>
                       ))}
-                    </SkillsRow>
-                  </ContentItemInfoCont>
-                </ContentRow>
+                    </div>
+                  </div>
+                </div>
               )
           )
       ) : (
         <Text>Loading . . .</Text>
       )}
       {showMore()}
-    </ContentCont>
+    </div>
   );
 };
 

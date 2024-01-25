@@ -1,18 +1,14 @@
 import React from "react";
 
-import { Text, Title } from "./text";
-import { HeaderCont } from "./containers";
-
-
 const Header = () => {
-	return (
-		<HeaderCont>
-			<Title>Chester Hansen</Title>
-			<Text>
-				A Skilled Fullstack Developer building fluid Web Applications.
-			</Text>
-		</HeaderCont>
-	);
+  return (
+    <div className="p-8 items-start flex flex-col min-w-content justify-center">
+      <p className="text-primary-800 text-4xl w-[22rem] font-bold my-3">
+        Chester Hansen
+      </p>
+      <p>A Skilled Fullstack Developer building fluid Web Applications.</p>
+    </div>
+  );
 };
 
 export default Header;
