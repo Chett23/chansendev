@@ -97,18 +97,21 @@ const App = () => {
   return (
     <div className={theme}>
       <div
-        className={`bg-background-200 font-sans text-font-800 min-h-full flex flex-row justify-center items-center w-full dark:bg-background-100`}
+        className={`bg-background-200 font-sans text-font-800 min-h-screen flex justify-center items-center w-full dark:bg-background-100`}
       >
         {construction ? (
           <UnderConstruction />
         ) : notFound ? (
           <NotFound />
         ) : (
-          <div className="flex flex-row items-start justify-around max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-start justify-around max-w-7xl">
             {/* grid for left col and its children */}
-            <div className="flex flex-col sticky top-12 justify-around items-start h-[calc(90vh-48px)]">
+            <div className="flex flex-col lg:sticky top-12 justify-around items-start lg:h-[calc(90vh-48px)]">
               <Header />
-              <NavBar handleNavClick={handleNavClick} />
+              <NavBar
+                classes="hidden lg:visible"
+                handleNavClick={handleNavClick}
+              />
               <Footer />
             </div>
             <div className="flex flex-col gap-8 py-20 px-10 ml-16">
