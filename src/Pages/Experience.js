@@ -71,7 +71,7 @@ const Experience = () => {
                 <div className="flex justify-start w-full items-center flex-wrap">
                   {experience.tags.map((tag) => (
                     <div
-                      className="bg-secondary-300 text-primary-700 p-1.5 m-1.5 rounded-md cursor-pointer hover:text-accent-800"
+                      className="bg-secondary-300 text-primary-700 p-1.5 m-1.5 rounded-xl cursor-pointer hover:text-accent-800"
                       key={tag}
                     >
                       {tag}
