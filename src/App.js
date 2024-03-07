@@ -87,7 +87,7 @@ const App = () => {
 	return (
 		<div className={theme}>
 			<div
-				className={`bg-background-200 overflow-x-clip font-sans text-font-800 min-h-screen flex justify-center items-center w-full dark:bg-background-100`}
+				className={`bg-gradient-to-bl from-background-400 via-background-300 to-background-200 overflow-x-clip font-sans text-font-800 min-h-screen flex justify-center items-center w-full dark:from-background-100 dark:via-background-200 dark:to-background-100`}
 			>
 				{construction ? (
 					<UnderConstruction />

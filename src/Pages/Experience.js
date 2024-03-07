@@ -44,7 +44,7 @@ const Experience = () => {
           .sort((a, b) => a.priority - b.priority)
           .map((experience) => (
             <div
-              className="flex justify-around items-start cursor-pointer hover:bg-accent-200 hover:rounded-3xl hover:text-primary-800"
+              className="flex justify-around items-start cursor-pointer hover:bg-accent-200 hover:rounded-3xl hover:text-primary-800 hover:drop-shadow-md hover:ring-1"
               key={experience.id}
               onClick={() => window.open(experience.url)}
             >
