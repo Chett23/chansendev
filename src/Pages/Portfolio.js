@@ -48,7 +48,7 @@ const Portfolio = () => {
 						(project, i) =>
 							i <= projectsToShow && (
 								<div
-									className="flex justify-start items-start flex-col-reverse xl:flex-row cursor-pointer min-w-full hover:bg-accent-200 hover:rounded-3xl hover:text-primary-800"
+									className="flex justify-start items-start flex-col-reverse xl:flex-row cursor-pointer min-w-full hover:bg-accent-200 hover:rounded-3xl hover:text-primary-800 hover:drop-shadow-md hover:ring-1"
 									key={project.id}
 									onClick={() => window.open(project.url)}
 								>
